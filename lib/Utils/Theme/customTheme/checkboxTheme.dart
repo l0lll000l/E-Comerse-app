@@ -6,7 +6,7 @@ class TCheckBoxTheme {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       checkColor: MaterialStateProperty.resolveWith((states) {
         if (states.contains(MaterialState.selected)) {
-          return Colors.blue;
+          return Colors.white;
         } else {
           return Colors.black;
         }
@@ -22,7 +22,7 @@ class TCheckBoxTheme {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       checkColor: MaterialStateProperty.resolveWith((states) {
         if (states.contains(MaterialState.selected)) {
-          return Colors.blue;
+          return Colors.white;
         } else {
           return Colors.black;
         }

@@ -10,4 +10,6 @@ class TImages {
   static const String onbordingImage1 = "assets/images/onbording/food.gif";
   static const String onbordingImage2 = "assets/images/onbording/motor.gif";
   static const String onbordingImage3 = "assets/images/onbording/truck.gif";
+  //email Validation logo
+  static const String emailValidationimage = "assets/images/image/4.png";
 }
