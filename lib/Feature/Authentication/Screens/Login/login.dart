@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/styles/spacing_styles.dart';
+import 'package:flutter_application_1/Common/widgets/Login_signup/socialMediaIcon.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/widgets/LoginForm.dart';
-import 'package:flutter_application_1/Common/widgets/divider.dart';
-import 'package:flutter_application_1/Common/widgets/googleAndFacebook.dart';
+import 'package:flutter_application_1/Common/widgets/Login_signup/divider.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/widgets/logo.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
