@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Feature/Authentication/Screens/Forgot_password/forget_password.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/signUp.dart';
+import 'package:flutter_application_1/Navigation_menu.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:get/get.dart';
@@ -49,7 +51,10 @@ class LoginForm extends StatelessWidget {
 
               /// forget password
               TextButton(
-                  onPressed: () {}, child: const Text(TTexts.forgetPassword))
+                  onPressed: () {
+                    Get.to(() => const ForgetPassword());
+                  },
+                  child: const Text(TTexts.forgetPassword))
             ],
           ),
           const SizedBox(height: TSizes.spaceBtwItems),
@@ -57,7 +62,10 @@ class LoginForm extends StatelessWidget {
           SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                  onPressed: () {}, child: const Text(TTexts.signin))),
+                  onPressed: () {
+                    Get.to(() => const NavigationMenu());
+                  },
+                  child: const Text(TTexts.signin))),
           const SizedBox(height: TSizes.spaceBtwItems),
           //create account
           SizedBox(

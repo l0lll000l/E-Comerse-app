@@ -12,4 +12,7 @@ class TImages {
   static const String onbordingImage3 = "assets/images/onbording/truck.gif";
   //email Validation logo
   static const String emailValidationimage = "assets/images/image/4.png";
+  static const String resetPassword = "assets/images/image/resetPassword.png";
+  // Home screen
+  static const String testImage = "assets/images/image/logo.png";
 }

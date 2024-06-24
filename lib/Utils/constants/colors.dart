@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TColors {
   TColors._();
   // App  Basic Colors
-  static const Color primary = Colors.lightBlue;
+  static const Color primary = Color.fromARGB(255, 3, 55, 211);
   static const Color secondary = Colors.yellow;
   static const Color accent = Colors.grey;
 // Gradient color
