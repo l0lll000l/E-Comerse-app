@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
+  carousel_slider: ^4.2.1
   cloud_firestore: ^5.0.1
   cupertino_icons: ^1.0.6
   firebase_auth: ^5.1.0
@@ -39,6 +40,8 @@ flutter:
     - assets/images/
     - assets/images/onbording/
     - assets/images/image/
+    - assets/images/banner/
+
   # example:
   # fonts:
   #   - family: Schyler

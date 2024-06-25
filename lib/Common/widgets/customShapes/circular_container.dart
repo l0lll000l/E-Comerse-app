@@ -9,16 +9,19 @@ class TCircularContainer extends StatelessWidget {
       this.radius = 400,
       this.padding = 0,
       this.backgroundColor = TColors.light,
-      this.child});
+      this.child,
+      this.margin});
   final double width;
   final double height;
   final double? radius;
   final double? padding;
   final Widget? child;
   final Color backgroundColor;
+  final EdgeInsets? margin;
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       width: width,
       height: height,
       padding: EdgeInsets.all(padding!),

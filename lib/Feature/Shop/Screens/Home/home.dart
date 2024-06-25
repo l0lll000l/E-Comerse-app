@@ -4,6 +4,9 @@ import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_app
 import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_catogories.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/promo.dart';
+import 'package:flutter_application_1/Utils/constants/image_strings.dart';
+
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,7 +33,18 @@ class HomeScreen extends StatelessWidget {
                   HomeCategories()
                 ],
               ),
-            )
+            ),
+
+            /// body
+            Padding(
+                padding: EdgeInsets.all(TSizes.defaultSpace),
+                child: TpromoSlider(
+                  banners: [
+                    TImages.banner1,
+                    TImages.banner2,
+                    TImages.banner3,
+                  ],
+                ))
           ],
         ),
       ),

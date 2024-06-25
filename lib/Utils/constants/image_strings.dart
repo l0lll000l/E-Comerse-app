@@ -15,4 +15,9 @@ class TImages {
   static const String resetPassword = "assets/images/image/resetPassword.png";
   // Home screen
   static const String testImage = "assets/images/image/logo.png";
+  // banner
+  static const String banner1 = "assets/images/banner/55off.jpg";
+  static const String banner2 = "assets/images/banner/bigSale.jpg";
+  static const String banner3 = "assets/images/banner/megaSale.jpg";
+  static const String banner4 = "assets/images/banner/megaSale1.jpg";
 }
