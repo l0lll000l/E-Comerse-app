@@ -1,8 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Utils/Theme/theme.dart';
-import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/app.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 

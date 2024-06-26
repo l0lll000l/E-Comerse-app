@@ -41,6 +41,7 @@ flutter:
     - assets/images/onbording/
     - assets/images/image/
     - assets/images/banner/
+    - assets/images/product/
 
   # example:
   # fonts:

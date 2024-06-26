@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/Login_signup/divider.dart';
-import 'package:flutter_application_1/Common/widgets/Login_signup/socialMediaIcon.dart';
+import 'package:flutter_application_1/Common/widgets/Login_signup/social_mediaIcon.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/verify_email.dart';
-import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/widgets/signUpForm.dart';
+import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/widgets/sign_upform.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:get/get.dart';
@@ -27,7 +27,7 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Signup form
-              SignUpForm(),
+              const SignUpForm(),
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// signup button
@@ -35,13 +35,13 @@ class SignUpScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => VerifyEmail());
+                        Get.to(() => const VerifyEmail());
                       },
-                      child: Text(TTexts.createAccount))),
+                      child: const Text(TTexts.createAccount))),
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// divider
-              SignInDivider(),
+              const SignInDivider(),
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// social buttons

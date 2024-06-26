@@ -44,7 +44,7 @@ class ForgetPassword extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () {
-                      Get.off(() => ResetPassword());
+                      Get.off(() => const ResetPassword());
                     },
                     child: const Text(TTexts.submit))),
           ],

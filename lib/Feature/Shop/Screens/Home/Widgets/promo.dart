@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Common/widgets/Body/rounded_image.dart';
+import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/circular_container.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/home_controller.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';

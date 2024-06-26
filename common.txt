@@ -1,0 +1,11 @@
+TColors.light
+
+icon: Icon(Iconsax.heart5, color: dark ? TColors.light : TColors.dark)
+
+SizedBox(height: TSizes.spaceBtwItems),
+
+Padding(padding: const EdgeInsets.all(TSizes.defaultSpace),),
+
+style: Theme.of(context).textTheme.headlineMedium,
+
+color: dark ? TColors.light : TColors.dark

@@ -20,4 +20,8 @@ class TImages {
   static const String banner2 = "assets/images/banner/bigSale.jpg";
   static const String banner3 = "assets/images/banner/megaSale.jpg";
   static const String banner4 = "assets/images/banner/megaSale1.jpg";
+  // product
+  static const String product1 = "assets/images/product/1.jpeg";
+  static const String product2 = "assets/images/product/2.jpeg";
+  static const String product3 = "assets/images/product/3.jpeg";
 }

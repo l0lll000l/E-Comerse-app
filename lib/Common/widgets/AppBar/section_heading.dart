@@ -4,7 +4,7 @@ class TsectionHeading extends StatelessWidget {
   const TsectionHeading({
     super.key,
     this.title = 'Popular Catogories',
-    this.buttonTitle = 'view all',
+    this.buttonTitle = 'View all',
     this.textcolor = Colors.black,
     this.showActionButton = false,
     this.onpressed,
@@ -24,6 +24,7 @@ class TsectionHeading extends StatelessWidget {
                 .apply(color: textcolor),
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
+        const Spacer(),
         if (showActionButton)
           TextButton(onPressed: onpressed, child: Text(buttonTitle))
       ],

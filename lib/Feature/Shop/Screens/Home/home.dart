@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
+import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
+import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
 
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
@@ -14,11 +17,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            PrimaryHeader(
+            const PrimaryHeader(
               child: Column(
                 children: [
                   /// AppBar
@@ -37,12 +40,28 @@ class HomeScreen extends StatelessWidget {
 
             /// body
             Padding(
-                padding: EdgeInsets.all(TSizes.defaultSpace),
-                child: TpromoSlider(
-                  banners: [
-                    TImages.banner1,
-                    TImages.banner2,
-                    TImages.banner3,
+                padding: const EdgeInsets.all(TSizes.defaultSpace),
+                child: Column(
+                  children: [
+                    /// Promo slider
+                    const TpromoSlider(
+                      banners: [
+                        TImages.banner1,
+                        TImages.banner2,
+                        TImages.banner3
+                      ],
+                    ),
+                    const SizedBox(height: TSizes.spaceBtwItems),
+                    const TsectionHeading(
+                      showActionButton: true,
+                    ),
+
+                    /// Popular products
+                    TGridview(
+                      itemcount: 6,
+                      itemBuilder: (BuildContext, int) =>
+                          const TProductCardVertical(),
+                    ),
                   ],
                 ))
           ],

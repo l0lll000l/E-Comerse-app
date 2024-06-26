@@ -20,11 +20,11 @@ class OnBordingNextButton extends StatelessWidget {
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: dark ? TColors.primary : Colors.black,
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
             ),
             onPressed: () {
               OnbordingController.instance.nextPage();
             },
-            child: Icon(Iconsax.arrow_right_3)));
+            child: const Icon(Iconsax.arrow_right_3)));
   }
 }

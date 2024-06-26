@@ -12,20 +12,26 @@ class TSearchContainer extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true,
+    this.padding = const EdgeInsets.all(TSizes.defaultSpace),
   });
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
+  final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Padding(
-      padding: const EdgeInsets.all(TSizes.defaultSpace),
+      padding: padding,
       child: Container(
         width: TDeviceUtils.getScreenWidth(context),
         padding: const EdgeInsets.all(TSizes.md),
         decoration: BoxDecoration(
-            border: showBorder ? Border.all(color: TColors.light) : null,
+            border: showBorder
+                ? dark
+                    ? Border.all(color: TColors.light)
+                    : Border.all(color: TColors.dark)
+                : null,
             borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
             color: showBackground
                 ? dark
@@ -38,7 +44,7 @@ class TSearchContainer extends StatelessWidget {
               icon,
               color: TColors.darkerGrey,
             ),
-            SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: TSizes.spaceBtwItems),
             Text(text, style: Theme.of(context).textTheme.bodyMedium)
           ],
         ),

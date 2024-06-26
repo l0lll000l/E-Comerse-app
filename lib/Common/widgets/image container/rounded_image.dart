@@ -6,7 +6,7 @@ class TRoundedImage extends StatelessWidget {
   const TRoundedImage({
     super.key,
     this.width = double.infinity,
-    this.height = 150,
+    this.height = double.infinity,
     required this.imageurl,
     this.applyImageRadius = false,
     this.border,

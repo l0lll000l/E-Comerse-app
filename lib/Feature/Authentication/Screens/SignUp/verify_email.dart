@@ -65,7 +65,7 @@ class VerifyEmail extends StatelessWidget {
                             Get.to(() => const LoginScreen());
                           }));
                     },
-                    child: Text(TTexts.Continue)),
+                    child: const Text(TTexts.Continue)),
               ),
               const SizedBox(height: TSizes.spaceBtwItems),
               SizedBox(
