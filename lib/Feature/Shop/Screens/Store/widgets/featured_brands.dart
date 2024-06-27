@@ -11,41 +11,48 @@ import 'package:flutter_application_1/Utils/constants/sizes.dart';
 class FeaturedBrands extends StatelessWidget {
   const FeaturedBrands({
     super.key,
+    this.imageurl = TImages.testImage,
+    this.showBorder = false,
   });
-
+  final String imageurl;
+  final bool showBorder;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return TRoundedContainer(
-      showBorder: true,
+      showBorder: showBorder,
       padding: const EdgeInsets.all(TSizes.sm),
       backgroundColor: Colors.transparent,
-      child: Row(
+      child: Column(
         children: [
-          Flexible(
-            child: TCircleImage(
-              imageurl: TImages.testImage,
-              backgroundColor: dark ? TColors.dark : TColors.light,
-              overlayColor: dark ? TColors.light : TColors.dark,
-            ),
-          ),
-          const SizedBox(width: TSizes.spaceBtwItems / 2),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BrandedText(
-                  brandTextSize: TextSizes.large,
-                  textcolor: dark ? TColors.light : TColors.dark,
+          Row(
+            children: [
+              Flexible(
+                child: TCircleImage(
+                  imageurl: imageurl,
+                  backgroundColor: dark ? TColors.dark : TColors.light,
+                  overlayColor: dark ? TColors.light : TColors.dark,
                 ),
-                Text(
-                  '256 products',
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.labelMedium,
-                )
-              ],
-            ),
-          )
+              ),
+              const SizedBox(width: TSizes.spaceBtwItems / 2),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BrandedText(
+                      brandTextSize: TextSizes.large,
+                      textcolor: dark ? TColors.light : TColors.dark,
+                    ),
+                    Text(
+                      '256 products',
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );

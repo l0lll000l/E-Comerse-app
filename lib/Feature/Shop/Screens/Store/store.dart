@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/cart_counter_icon.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/tabbar.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
+import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/catogory_tab.dart';
+
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/featured_brands.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
+import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class Store extends StatelessWidget {
-  const Store({super.key});
-
+  const Store({super.key, required this.images});
+  final List<String> images;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -64,13 +69,12 @@ class Store extends StatelessWidget {
 
                         /// Featured Brands
                         TGridview(
-                          itemcount: 4,
-                          mainAxisExtent: 69,
-                          itemBuilder: (BuildContext, int) => GestureDetector(
-                            onTap: () {},
-                            child: const FeaturedBrands(),
-                          ),
-                        )
+                            itemcount: 4,
+                            mainAxisExtent: 75,
+                            itemBuilder: (BuildContext, int) =>
+                                const FeaturedBrands(
+                                  showBorder: true,
+                                ))
                       ],
                     ),
                   ),
@@ -89,28 +93,13 @@ class Store extends StatelessWidget {
                 ),
               ];
             },
-            body: Container()
-            // const TabBarView(children: [
-            //   Padding(
-            //     padding: EdgeInsets.all(TSizes.defaultSpace),
-            //     child: Column(
-            //       children: [
-            //         TRoundedContainer(
-            //           showBorder: true,
-            //           borderColor: TColors.darkGrey,
-            //           backgroundColor: Colors.transparent,
-            //           margin: EdgeInsets.all(
-            //             TSizes.defaultSpace,
-            //           ),
-            //           child: Column(
-            //             children: [],
-            //           ),
-            //         )
-            //       ],
-            //     ),
-            //   )
-            // ])
-            ),
+            body: TabBarView(children: [
+              Tcatogory(images: images),
+              Tcatogory(images: images),
+              Tcatogory(images: images),
+              Tcatogory(images: images),
+              Tcatogory(images: images),
+            ])),
       ),
     );
   }

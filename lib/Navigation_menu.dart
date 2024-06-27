@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Feature/Shop/Screens/Home/home.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/store.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
+import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -43,7 +44,9 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    const Store(),
+    const Store(
+      images: [TImages.testImage, TImages.testImage, TImages.testImage],
+    ),
     Container(color: Colors.green),
     Container(color: Colors.orange),
   ];
