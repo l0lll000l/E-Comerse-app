@@ -1,0 +1,49 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:iconsax/iconsax.dart';
+
+class RatingAndShare extends StatelessWidget {
+  const RatingAndShare({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              Iconsax.star5,
+              color: Colors.yellow,
+              size: 24,
+            ),
+            const SizedBox(width: TSizes.spaceBtwItems / 2),
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                      text: '5.0',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .apply(color: Colors.white)),
+                  TextSpan(
+                      text: ' (199)',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .apply(color: Colors.white))
+                ],
+              ),
+            ),
+          ],
+        ),
+        IconButton(onPressed: () {}, icon: Icon(Icons.share))
+      ],
+    );
+  }
+}

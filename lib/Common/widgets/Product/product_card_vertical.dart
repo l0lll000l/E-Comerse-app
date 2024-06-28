@@ -3,11 +3,14 @@ import 'package:flutter_application_1/Common/widgets/image%20container/rounded_i
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/Product%20details/productdetails.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/wishList/widget/circularicon.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/shadow.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TProductCardVertical extends StatelessWidget {
@@ -17,7 +20,10 @@ class TProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      /// on tap
+      onTap: () {
+        Get.to(() => const ProductDetails());
+      },
       child: Container(
         width: 180,
         decoration: BoxDecoration(
@@ -59,23 +65,7 @@ class TProductCardVertical extends StatelessWidget {
                   ),
 
                   /// favorite icon
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: dark
-                              ? TColors.dark.withOpacity(0.9)
-                              : TColors.light.withOpacity(0.9),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Iconsax.heart5,
-                              color: dark ? TColors.light : TColors.dark)),
-                    ),
-                  )
+                  const CircleIcon()
                 ],
               ),
             ),
@@ -109,9 +99,33 @@ class TProductCardVertical extends StatelessWidget {
                         )
                       ],
                     ),
-                    const ProductPrice(
-                      price: '30',
-                      islarge: true,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const ProductPrice(
+                          price: '30',
+                          islarge: true,
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: TColors.black,
+                            borderRadius: BorderRadius.only(
+                                bottomRight:
+                                    Radius.circular(TSizes.productImageRadius),
+                                topLeft: Radius.circular(TSizes.cardRadiusMd)),
+                          ),
+                          child: const SizedBox(
+                            height: TSizes.iconLg * 1.2,
+                            width: TSizes.iconLg * 1.2,
+                            child: Center(
+                              child: Icon(
+                                Iconsax.add,
+                                color: TColors.light,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ],
                 ))

@@ -9,18 +9,24 @@ class TCircleImage extends StatelessWidget {
     this.fit = BoxFit.cover,
     required this.backgroundColor,
     required this.overlayColor,
+    this.width = 56,
+    this.height = 56,
+    this.padding = const EdgeInsets.all(TSizes.sm),
   });
   final String imageurl;
   final Color? backgroundColor;
   final Color? overlayColor;
   final bool isNetworkImage;
   final BoxFit? fit;
+  final double? width;
+  final double? height;
+  final EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 56,
-      height: 56,
-      padding: const EdgeInsets.all(TSizes.sm),
+      width: width,
+      height: height,
+      padding: padding,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100), color: backgroundColor),
       child: Image(

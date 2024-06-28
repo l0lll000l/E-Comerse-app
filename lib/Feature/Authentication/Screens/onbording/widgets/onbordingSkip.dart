@@ -17,7 +17,7 @@ class OnBordingSkip extends StatelessWidget {
           onPressed: () {
             OnbordingController.instance.skipPage();
           },
-          child: Text('Skip')),
+          child: const Text('Skip')),
     );
   }
 }

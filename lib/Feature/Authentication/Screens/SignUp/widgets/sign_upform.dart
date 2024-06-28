@@ -78,19 +78,19 @@ class SignUpForm extends StatelessWidget {
             ),
             Text.rich(TextSpan(children: [
               TextSpan(
-                  text: '${TTexts.iAgreeTo}',
+                  text: TTexts.iAgreeTo,
                   style: Theme.of(context).textTheme.bodySmall),
               TextSpan(
-                  text: '${TTexts.privacyPolicy}',
+                  text: TTexts.privacyPolicy,
                   style: Theme.of(context).textTheme.bodyMedium!.apply(
                       decorationColor: dark ? TColors.light : TColors.primary,
                       decoration: TextDecoration.underline,
                       color: dark ? TColors.light : TColors.primary)),
               TextSpan(
-                  text: '${TTexts.and}',
+                  text: TTexts.and,
                   style: Theme.of(context).textTheme.bodySmall),
               TextSpan(
-                  text: '${TTexts.termsOfUse}',
+                  text: TTexts.termsOfUse,
                   style: Theme.of(context).textTheme.bodyMedium!.apply(
                       decorationColor: dark ? TColors.light : TColors.primary,
                       decoration: TextDecoration.underline,

@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/cart_counter_icon.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/tabbar.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
-import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
-import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/catogory_tab.dart';
 
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/featured_brands.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class Store extends StatelessWidget {

@@ -16,6 +16,7 @@ class TRoundedImage extends StatelessWidget {
     this.onPressed,
     this.backGroundColor = TColors.light,
     this.borderRadius = TSizes.md,
+    this.imageradius = TSizes.md,
   });
   final double? width, height;
   final String imageurl;
@@ -27,6 +28,7 @@ class TRoundedImage extends StatelessWidget {
   final bool isNetworkImage;
   final VoidCallback? onPressed;
   final double borderRadius;
+  final double imageradius;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,12 +42,16 @@ class TRoundedImage extends StatelessWidget {
             border: border,
             color: backGroundColor),
         child: ClipRRect(
-            borderRadius: BorderRadius.circular(TSizes.md),
+            borderRadius: applyImageRadius
+                ? BorderRadius.circular(imageradius)
+                : BorderRadius.zero,
             child: Image(
-                fit: fit,
-                image: isNetworkImage
-                    ? NetworkImage(imageurl)
-                    : AssetImage(imageurl) as ImageProvider)),
+              fit: fit,
+              // clip: Clip.hardEdge,
+              image: isNetworkImage
+                  ? NetworkImage(imageurl)
+                  : AssetImage(imageurl) as ImageProvider,
+            )),
       ),
     );
   }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/sizes.dart';
-import 'package:iconsax/iconsax.dart';
 
 class ProductPrice extends StatelessWidget {
   const ProductPrice({
@@ -10,11 +8,13 @@ class ProductPrice extends StatelessWidget {
     this.currencySign = '\$',
     this.islarge = false,
     this.lineThrough = false,
+    this.textColor = TColors.light,
   });
   final String price;
   final String currencySign;
   final bool islarge;
   final bool lineThrough;
+  final Color textColor;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,29 +26,12 @@ class ProductPrice extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: islarge
                 ? Theme.of(context).textTheme.headlineMedium!.apply(
+                    color: textColor,
                     decoration: lineThrough ? TextDecoration.lineThrough : null)
                 : Theme.of(context).textTheme.titleLarge!.apply(
+                    color: textColor,
                     decoration:
                         lineThrough ? TextDecoration.lineThrough : null)),
-
-        Container(
-          decoration: const BoxDecoration(
-            color: TColors.black,
-            borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(TSizes.productImageRadius),
-                topLeft: Radius.circular(TSizes.cardRadiusMd)),
-          ),
-          child: const SizedBox(
-            height: TSizes.iconLg * 1.2,
-            width: TSizes.iconLg * 1.2,
-            child: Center(
-              child: Icon(
-                Iconsax.add,
-                color: TColors.light,
-              ),
-            ),
-          ),
-        )
       ],
     );
   }

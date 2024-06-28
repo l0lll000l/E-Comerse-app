@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/home.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/store.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/profile.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/wishList/wishlist.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
@@ -47,7 +49,7 @@ class NavigationController extends GetxController {
     const Store(
       images: [TImages.testImage, TImages.testImage, TImages.testImage],
     ),
-    Container(color: Colors.green),
-    Container(color: Colors.orange),
+    const WishList(),
+    const Profile(),
   ];
 }

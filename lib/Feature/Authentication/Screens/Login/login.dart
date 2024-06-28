@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             const LoginForm(),
 
             /// Divider
-            SignInDivider(),
+            const SignInDivider(),
             const SizedBox(height: TSizes.spaceBtwSections),
             const GoogleFaceBookIcon()
           ],
