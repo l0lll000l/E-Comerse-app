@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
+import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -11,6 +13,7 @@ class RatingAndShare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -30,13 +33,13 @@ class RatingAndShare extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
-                          .apply(color: Colors.white)),
+                          .apply(color: dark ? TColors.light : TColors.dark)),
                   TextSpan(
                       text: ' (199)',
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
-                          .apply(color: Colors.white))
+                          .apply(color: dark ? TColors.light : TColors.dark))
                 ],
               ),
             ),

@@ -22,7 +22,7 @@ class ProductImage extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     return TCurvedEdgeWidget(
         child: Container(
-      color: dark ? TColors.darkerGrey : TColors.light,
+      color: dark ? TColors.light : TColors.light,
       child: Stack(
         children: [
           SizedBox(

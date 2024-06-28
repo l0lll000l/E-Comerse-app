@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
@@ -65,7 +66,7 @@ class TProductCardVertical extends StatelessWidget {
                   ),
 
                   /// favorite icon
-                  const CircleIcon()
+                  const Positioned(top: 0, right: 0, child: CircleIcon())
                 ],
               ),
             ),
@@ -78,18 +79,22 @@ class TProductCardVertical extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const ProductTitleText(
+                    ProductTitleText(
+                      textColor: dark ? TColors.light : TColors.dark,
                       smallSize: true,
                       text: 'Green Nike Air Shoes',
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+                    /// brand
                     Row(
                       children: [
                         Text(
                           'Nike',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.labelMedium,
+                          style: Theme.of(context).textTheme.labelMedium!.apply(
+                              color: dark ? TColors.light : TColors.dark),
                         ),
                         const SizedBox(width: TSizes.xs),
                         const Icon(
@@ -99,10 +104,13 @@ class TProductCardVertical extends StatelessWidget {
                         )
                       ],
                     ),
+
+                    /// price
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const ProductPrice(
+                        ProductPrice(
+                          textColor: dark ? TColors.light : TColors.dark,
                           price: '30',
                           islarge: true,
                         ),

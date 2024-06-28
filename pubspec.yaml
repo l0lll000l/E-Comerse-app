@@ -17,12 +17,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.0
+  flutter_rating_bar: ^4.0.1
   get: ^4.6.6
   get_storage: ^2.1.1
   http: ^1.2.1
   iconsax: ^0.0.8
   intl: ^0.19.0
   logger: ^2.3.0
+  readmore: ^3.0.0
   smooth_page_indicator: ^1.1.0
   url_launcher: ^6.3.0
 
@@ -42,7 +44,6 @@ flutter:
     - assets/images/image/
     - assets/images/banner/
     - assets/images/product/
-
   # example:
   # fonts:
   #   - family: Schyler

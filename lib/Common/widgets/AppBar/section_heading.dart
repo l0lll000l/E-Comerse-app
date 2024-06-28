@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class TsectionHeading extends StatelessWidget {
   const TsectionHeading({
@@ -8,11 +10,15 @@ class TsectionHeading extends StatelessWidget {
     this.textcolor = Colors.black,
     this.showActionButton = false,
     this.onpressed,
+    this.child,
+    this.addChild = false,
   });
   final String title, buttonTitle;
   final Color textcolor;
   final bool showActionButton;
   final void Function()? onpressed;
+  final Widget? child;
+  final bool addChild;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -24,6 +30,8 @@ class TsectionHeading extends StatelessWidget {
                 .apply(color: textcolor),
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
+        SizedBox(width: TSizes.spaceBtwItems),
+        if (addChild) child!,
         const Spacer(),
         if (showActionButton)
           TextButton(onPressed: onpressed, child: Text(buttonTitle))
