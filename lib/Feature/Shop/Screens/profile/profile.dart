@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/ADDRESS/address.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/profile_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/Cart/cart_screen.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userprofile.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
@@ -64,13 +66,17 @@ class Profile extends StatelessWidget {
               icon: Iconsax.safe_home,
               title: 'My Address',
               subtitle: 'Set shoping delivery address',
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const UserAddressScreen());
+              },
             ),
             TsettingMenu(
               icon: Iconsax.shopping_cart,
               title: 'My Cart',
               subtitle: 'Add remove products and move to checkout',
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const CartScreen());
+              },
             ),
             TsettingMenu(
               icon: Iconsax.bag_tick,

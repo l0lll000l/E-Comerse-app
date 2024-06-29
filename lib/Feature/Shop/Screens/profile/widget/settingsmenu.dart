@@ -22,26 +22,29 @@ class TsettingMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return ListTile(
-      title: Text(
-        " $title",
-        style: Theme.of(context)
-            .textTheme
-            .titleMedium!
-            .apply(color: dark ? TColors.light : TColors.dark),
-      ),
-      subtitle: Text(" $subtitle",
+    return GestureDetector(
+      onTap: onPressed,
+      child: ListTile(
+        title: Text(
+          " $title",
           style: Theme.of(context)
               .textTheme
-              .labelMedium!
-              .apply(color: dark ? TColors.light : TColors.dark)),
-      leading: Icon(
-        icon,
-        size: 28,
-        color: TColors.primary,
+              .titleMedium!
+              .apply(color: dark ? TColors.light : TColors.dark),
+        ),
+        subtitle: Text(" $subtitle",
+            style: Theme.of(context)
+                .textTheme
+                .labelMedium!
+                .apply(color: dark ? TColors.light : TColors.dark)),
+        leading: Icon(
+          icon,
+          size: 28,
+          color: TColors.primary,
+        ),
+        trailing: trailing,
+        onTap: onTap,
       ),
-      trailing: trailing,
-      onTap: onTap,
     );
   }
 }

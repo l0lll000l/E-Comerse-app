@@ -7,28 +7,23 @@ class CircleIcon extends StatelessWidget {
   const CircleIcon({
     super.key,
     this.icon = Iconsax.heart5,
-    this.top,
-    this.right,
-    this.bottom,
-    this.left,
     this.height = 40,
     this.width = 40,
     this.lightmode = TColors.light,
     this.darkMode = TColors.dark,
     this.lightmodebackground = TColors.light,
     this.darkModebackground = TColors.dark,
+    this.iconsize,
   });
   final IconData icon;
-  final double? top;
-  final double? right;
-  final double? bottom;
-  final double? left;
+
   final double? height;
   final double? width;
   final Color lightmode;
   final Color darkMode;
   final Color lightmodebackground;
   final Color darkModebackground;
+  final double? iconsize;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -40,9 +35,12 @@ class CircleIcon extends StatelessWidget {
               ? lightmodebackground.withOpacity(0.9)
               : darkModebackground.withOpacity(0.9),
           borderRadius: BorderRadius.circular(20)),
-      child: IconButton(
-          onPressed: () {},
-          icon: Icon(icon, color: dark ? darkMode : lightmode)),
+      child: Center(
+        child: IconButton(
+            onPressed: () {},
+            icon:
+                Icon(size: iconsize, icon, color: dark ? darkMode : lightmode)),
+      ),
     );
   }
 }

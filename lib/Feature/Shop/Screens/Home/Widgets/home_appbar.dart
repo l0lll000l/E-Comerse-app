@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/cart_counter_icon.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/Cart/cart_screen.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
+import 'package:get/get.dart';
 
 class ThomeAppBar extends StatelessWidget {
   const ThomeAppBar({
@@ -16,7 +18,9 @@ class ThomeAppBar extends StatelessWidget {
       actions: [
         TCartCounterIcon(
           iconColor: TColors.light,
-          onpressed: () {},
+          onpressed: () {
+            Get.to(() => const CartScreen());
+          },
         )
       ],
 

@@ -12,7 +12,7 @@ class SuccessScreen extends StatelessWidget {
       required this.subtitle,
       this.onpressed});
   final String image, title, subtitle;
-  final VoidCallback? onpressed;
+  final void Function()? onpressed;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class SuccessScreen extends StatelessWidget {
                   textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              /// conform email
+              /// subtitle
               Text(subtitle,
                   style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center),
@@ -41,7 +41,10 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: onpressed, child: const Text(TTexts.Continue)),
+                    onPressed: onpressed,
+                    child: Text(
+                      TTexts.Continue,
+                    )),
               ),
             ],
           ),

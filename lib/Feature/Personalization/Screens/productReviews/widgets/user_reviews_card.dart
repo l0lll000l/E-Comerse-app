@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/productReviews/widgets/ratingbar.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/productReviews/widgets/ratingbar.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';

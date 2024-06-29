@@ -26,4 +26,14 @@ class TImages {
   static const String product3 = "assets/images/product/3.jpeg";
   // user
   static const String user = "assets/icons/user.png";
+  // payment method
+  static const String paypal = "assets/icons/paypal.png";
+  static const String googlePay = "assets/icons/gpay.png";
+  static const String creditCard = "assets/icons/creditcard.png";
+  static const String applePay = "assets/icons/applepay.png";
+  static const String paytm = "assets/icons/paytm.png";
+  //payment status
+  static const String success = "assets/icons/paymentSuccess.gif";
+
+  // shipping
 }

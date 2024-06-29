@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/productReviews/widgets/overall_rating.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/productReviews/widgets/ratingbar.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/productReviews/widgets/user_reviews_card.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/productReviews/widgets/overall_rating.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/productReviews/widgets/ratingbar.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/productReviews/widgets/user_reviews_card.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 

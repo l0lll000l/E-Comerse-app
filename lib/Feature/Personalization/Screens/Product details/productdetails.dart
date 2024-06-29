@@ -5,10 +5,10 @@ import 'package:flutter_application_1/Common/widgets/Product/product_title_text.
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/Text/branded_text.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/circle_image.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Product%20details/widgets/add_to_card.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Product%20details/widgets/product_attributes.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Product%20details/widgets/rating_and_share.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/productReviews/productreview.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/add_to_card.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/product_attributes.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/rating_and_share.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/productReviews/productreview.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/enums.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';

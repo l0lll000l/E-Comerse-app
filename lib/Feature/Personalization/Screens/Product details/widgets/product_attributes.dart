@@ -4,7 +4,7 @@ import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart
 import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Product%20details/widgets/choice_chip.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/choice_chip.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_application_1/Common/widgets/image%20container/rounded_i
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Product%20details/productdetails.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/productdetails.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/wishList/widget/circularicon.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
