@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class ProductAttributes extends StatelessWidget {
   const ProductAttributes({super.key});

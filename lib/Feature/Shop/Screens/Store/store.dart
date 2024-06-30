@@ -5,12 +5,16 @@ import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dar
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/tabbar.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/AllBrands/all_brands.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/BrandProducts/brand_products.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/catogory_tab.dart';
 
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/featured_brands.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class Store extends StatelessWidget {
   const Store({super.key, required this.images});
@@ -58,7 +62,10 @@ class Store extends StatelessWidget {
                         const SizedBox(height: TSizes.spaceBtwItems),
 
                         /// section heading
-                        const TsectionHeading(
+                        TsectionHeading(
+                          onpressed: () {
+                            Get.to(() => const AllBrands());
+                          },
                           showActionButton: true,
                           title: 'Featured Brands',
                         ),
@@ -67,8 +74,9 @@ class Store extends StatelessWidget {
                         TGridview(
                             itemcount: 4,
                             mainAxisExtent: 75,
-                            itemBuilder: (BuildContext, int) =>
-                                const FeaturedBrands(
+                            itemBuilder: (BuildContext, int) => FeaturedBrands(
+                                  onTap: () =>
+                                      Get.to(() => const BrandedProducts()),
                                   showBorder: true,
                                 ))
                       ],

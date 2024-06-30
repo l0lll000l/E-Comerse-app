@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
-import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/profile_menu.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Profile/Widgets/profile_menu.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';

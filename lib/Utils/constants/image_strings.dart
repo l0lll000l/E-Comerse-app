@@ -24,6 +24,8 @@ class TImages {
   static const String product1 = "assets/images/product/1.jpeg";
   static const String product2 = "assets/images/product/2.jpeg";
   static const String product3 = "assets/images/product/3.jpeg";
+  static const String product4 = "assets/images/product/tshirt.jpg";
+  static const String product5 = "assets/images/product/shoe.jpg";
   // user
   static const String user = "assets/icons/user.png";
   // payment method

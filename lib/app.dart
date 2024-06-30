@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Feature/Authentication/Screens/onbording/onbording.dart';
 import 'package:flutter_application_1/Utils/Theme/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -14,6 +13,9 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         theme: TAppTheme.lightTheme,
         darkTheme: TAppTheme.darkTheme,
-        home: const OnbordingScreen());
+        home: const Scaffold(
+            body: Center(
+          child: CircularProgressIndicator(),
+        )));
   }
 }

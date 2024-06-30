@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
-import 'package:flutter_application_1/Feature/Personalization/Screens/ADDRESS/address.dart';
-import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/profile_screen.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/cart_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/ADDRESS/address.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/order.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/widgets/orders_list.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Profile/profile_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/cart_screen.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userprofile.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
@@ -82,7 +84,9 @@ class Profile extends StatelessWidget {
               icon: Iconsax.bag_tick,
               title: 'My orders',
               subtitle: 'In-progress and Completed orders',
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const Orders());
+              },
             ),
             TsettingMenu(
               icon: Iconsax.bank,

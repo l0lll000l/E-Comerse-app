@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/vertica_image_text.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/SubCatogory/sub_categories.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class HomeCategories extends StatelessWidget {
   const HomeCategories({
@@ -29,7 +31,11 @@ class HomeCategories extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index) {
-                return const TverticalImageText();
+                return TverticalImageText(
+                  onTap: () {
+                    Get.to(() => const SubCatogoriesScreen());
+                  },
+                );
               },
             ),
           )

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/promo.da
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,7 +54,10 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems),
-                    const TsectionHeading(
+                    TsectionHeading(
+                      onpressed: () {
+                        Get.to(() => const AllProducts());
+                      },
                       showActionButton: true,
                     ),
 

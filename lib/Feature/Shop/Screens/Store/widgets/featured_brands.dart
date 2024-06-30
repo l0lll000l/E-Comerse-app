@@ -13,47 +13,52 @@ class FeaturedBrands extends StatelessWidget {
     super.key,
     this.imageurl = TImages.testImage,
     this.showBorder = false,
+    this.onTap,
   });
   final String imageurl;
   final bool showBorder;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return TRoundedContainer(
-      showBorder: showBorder,
-      padding: const EdgeInsets.all(TSizes.sm),
-      backgroundColor: Colors.transparent,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Flexible(
-                child: TCircleImage(
-                  imageurl: imageurl,
-                  backgroundColor: dark ? TColors.dark : TColors.light,
-                  overlayColor: dark ? TColors.light : TColors.dark,
+    return GestureDetector(
+      onTap: onTap,
+      child: TRoundedContainer(
+        showBorder: showBorder,
+        padding: const EdgeInsets.all(TSizes.sm),
+        backgroundColor: Colors.transparent,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Flexible(
+                  child: TCircleImage(
+                    imageurl: imageurl,
+                    backgroundColor: dark ? TColors.dark : TColors.light,
+                    overlayColor: dark ? TColors.light : TColors.dark,
+                  ),
                 ),
-              ),
-              const SizedBox(width: TSizes.spaceBtwItems / 2),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BrandedText(
-                      brandTextSize: TextSizes.large,
-                      textcolor: dark ? TColors.light : TColors.dark,
-                    ),
-                    Text(
-                      '256 products',
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ],
+                const SizedBox(width: TSizes.spaceBtwItems / 2),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BrandedText(
+                        brandTextSize: TextSizes.large,
+                        textcolor: dark ? TColors.light : TColors.dark,
+                      ),
+                      Text(
+                        '256 products',
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/Widgets/cart_item_listview.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/checkout.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/Widgets/cart_item_listview.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/checkout.dart';
 
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';

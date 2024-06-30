@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/success_screen/Success.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/Widgets/cart_item_listview.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/billing/billing_address.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/billing/billing_amount_section.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Cart/billing/billing_payment_section.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/Widgets/cart_item_listview.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/billing_address.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/billing_amount_section.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/billing_payment_section.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/home.dart';
 import 'package:flutter_application_1/Navigation_menu.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
@@ -71,7 +71,11 @@ class CheckOutPage extends StatelessWidget {
           ),
         ),
       ),
+
+      ///checkout button
       bottomNavigationBar: ElevatedButton(
+
+          ///success screen
           onPressed: () {
             Get.to(() => SuccessScreen(
                   image: TImages.testImage,
