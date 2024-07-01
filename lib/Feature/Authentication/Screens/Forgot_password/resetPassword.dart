@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login.dart';
+import 'package:flutter_application_1/Feature/Authentication/controller/ForgotPassword/forgot_password_controller.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
@@ -12,6 +13,7 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgotPasswordController());
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -55,14 +57,15 @@ class ResetPassword extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        Get.off(() => const LoginScreen());
+                        Get.offAll(() => const LoginScreen());
                       },
                       child: const Text(TTexts.done))),
               SizedBox(
                   width: double.infinity,
                   child: TextButton(
                       onPressed: () {
-                        Get.off(() => ());
+                        controller.resendPasswordResetEmail(
+                            controller.email.text.trim());
                       },
                       child: const Text(TTexts.resendEmail))),
             ],
