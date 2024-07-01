@@ -2,7 +2,7 @@ class TValidator {
   ///------------------------------------------------- validate name
   static String? validateName(String? value, {String? name}) {
     if (value == null || value.isEmpty) {
-      return '$name name is required.';
+      return '$name is required.';
     }
     return null;
   }

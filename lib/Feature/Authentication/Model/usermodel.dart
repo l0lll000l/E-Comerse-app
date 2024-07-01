@@ -28,7 +28,7 @@ class UserModel {
   String get formattedPhone => Tformatter.formatPhoneNumber(phone);
 
   /// split fullname to get first and last name
-  static List<String> nameparts(fullname) => fullname.split("");
+  static List<String> nameparts(fullname) => fullname.split(" ");
 
   /// function to generate username
   static String generateUserName(fullname) {

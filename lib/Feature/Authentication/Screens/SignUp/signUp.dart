@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/Login_signup/divider.dart';
 import 'package:flutter_application_1/Common/widgets/Login_signup/social_mediaIcon.dart';
-import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/verify_email.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/widgets/sign_upform.dart';
 import 'package:flutter_application_1/Feature/Authentication/controller/signUp/signup_controller.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';

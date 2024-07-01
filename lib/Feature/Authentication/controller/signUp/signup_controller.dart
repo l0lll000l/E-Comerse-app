@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Data/Repository/User/user_repository.dart';
@@ -36,6 +39,7 @@ class SignUpController extends GetxController {
 
       if (!isConnected) {
         TfullScreenLoader.stopLoading();
+        Tloaders.warningSnackBar(title: 'No Internet Connection');
         return;
       }
       // form validation
@@ -76,7 +80,7 @@ class SignUpController extends GetxController {
       Tloaders.successSnackBar(
           title: 'Success', message: 'Account created successfully');
       // move to verify email screen
-      Get.to(() => const VerifyEmail());
+      Get.to(() => VerifyEmail(email: email.text.trim()));
     } catch (e) {
       // show some error message
       Tloaders.errorSnackBar(message: e.toString(), title: 'oh snap!');

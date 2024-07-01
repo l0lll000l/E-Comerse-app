@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
+import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login.dart';
+import 'package:flutter_application_1/Feature/Authentication/Screens/Login/widgets/loginForm.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';

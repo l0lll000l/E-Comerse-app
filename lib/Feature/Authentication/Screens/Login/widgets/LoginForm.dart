@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Forgot_password/forget_password.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/signUp.dart';
+import 'package:flutter_application_1/Feature/Authentication/controller/login/login_controller.dart';
 import 'package:flutter_application_1/Navigation_menu.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
+import 'package:flutter_application_1/Utils/validators/validator.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LoginForm extends StatelessWidget {
@@ -14,69 +18,94 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+        key: controller.loginFormKey,
         child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
-      child: Column(
-        children: [
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: TTexts.email,
-              prefixIcon: Icon(Iconsax.direct_right),
-            ),
-          ),
-          const SizedBox(height: TSizes.spaceBtwInputFields),
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: TTexts.password,
-              suffixIcon: Icon(Iconsax.eye_slash),
-              prefixIcon: Icon(Iconsax.lock),
-            ),
-          ),
-          const SizedBox(height: TSizes.spaceBtwInputFields / 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          padding:
+              const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
+          child: Column(
             children: [
-              /// remember me
+              /// email
+              TextFormField(
+                validator: (value) => TValidator.validateEmail(value),
+                controller: controller.email,
+                decoration: const InputDecoration(
+                  labelText: TTexts.email,
+                  prefixIcon: Icon(Iconsax.direct_right),
+                ),
+              ),
+              const SizedBox(height: TSizes.spaceBtwInputFields),
 
-              Row(
-                children: [
-                  Checkbox(
-                    value: true,
-                    onChanged: (value) {},
+              ///password
+              Obx(
+                () => TextFormField(
+                  validator: (value) =>
+                      TValidator.validateName(value, name: 'Password'),
+                  obscureText: controller.hidePassword.value,
+                  controller: controller.password,
+                  decoration: InputDecoration(
+                    labelText: TTexts.password,
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          controller.hidePassword.value =
+                              !controller.hidePassword.value;
+                        },
+                        icon: controller.hidePassword.value
+                            ? const Icon(Iconsax.eye_slash)
+                            : const Icon(Iconsax.eye)),
+                    prefixIcon: const Icon(Iconsax.lock),
                   ),
-                  const Text(TTexts.rememberMe)
+                ),
+              ),
+              const SizedBox(height: TSizes.spaceBtwInputFields / 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /// remember me
+
+                  Row(
+                    children: [
+                      Obx(
+                        () => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) {
+                            controller.rememberMe.value = value!;
+                          },
+                        ),
+                      ),
+                      const Text(TTexts.rememberMe)
+                    ],
+                  ),
+
+                  /// forget password
+                  TextButton(
+                      onPressed: () {
+                        Get.to(() => const ForgetPassword());
+                      },
+                      child: const Text(TTexts.forgetPassword))
                 ],
               ),
-
-              /// forget password
-              TextButton(
-                  onPressed: () {
-                    Get.to(() => const ForgetPassword());
-                  },
-                  child: const Text(TTexts.forgetPassword))
+              const SizedBox(height: TSizes.spaceBtwItems),
+              //sign in
+              SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                      onPressed: () {
+                        controller.login();
+                      },
+                      child: const Text(TTexts.signin))),
+              const SizedBox(height: TSizes.spaceBtwItems),
+              //create account
+              SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                      onPressed: () {
+                        Get.to(() => const SignUpScreen());
+                      },
+                      child: const Text(TTexts.createAccount)))
             ],
           ),
-          const SizedBox(height: TSizes.spaceBtwItems),
-          //sign in
-          SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                  onPressed: () {
-                    Get.to(() => const NavigationMenu());
-                  },
-                  child: const Text(TTexts.signin))),
-          const SizedBox(height: TSizes.spaceBtwItems),
-          //create account
-          SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                  onPressed: () {
-                    Get.to(() => const SignUpScreen());
-                  },
-                  child: const Text(TTexts.createAccount)))
-        ],
-      ),
-    ));
+        ));
   }
 }

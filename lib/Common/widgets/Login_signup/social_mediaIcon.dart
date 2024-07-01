@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Feature/Authentication/controller/login/login_controller.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class GoogleFaceBookIcon extends StatelessWidget {
   const GoogleFaceBookIcon({
@@ -10,6 +12,7 @@ class GoogleFaceBookIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -18,7 +21,9 @@ class GoogleFaceBookIcon extends StatelessWidget {
               border: Border.all(color: TColors.grey),
               borderRadius: BorderRadius.circular(100)),
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.googleSignIn();
+              },
               icon: const Image(
                   width: TSizes.iconMd,
                   height: TSizes.iconMd,
