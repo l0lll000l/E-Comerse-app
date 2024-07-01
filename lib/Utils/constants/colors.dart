@@ -6,6 +6,7 @@ class TColors {
   static const Color primary = Color.fromARGB(255, 3, 55, 211);
   static const Color secondary = Color.fromARGB(255, 255, 230, 0);
   static const Color accent = Colors.grey;
+  static const Color orange = Colors.orange;
 // Gradient color
   static const Gradient lineargradient = LinearGradient(
       end: Alignment(0.707, -0.707),

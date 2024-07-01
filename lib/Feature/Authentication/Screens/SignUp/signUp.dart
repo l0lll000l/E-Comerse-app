@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Common/widgets/Login_signup/divider.dart';
 import 'package:flutter_application_1/Common/widgets/Login_signup/social_mediaIcon.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/verify_email.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/widgets/sign_upform.dart';
+import 'package:flutter_application_1/Feature/Authentication/controller/signUp/signup_controller.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -35,7 +37,7 @@ class SignUpScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => const VerifyEmail());
+                        controller.signUp();
                       },
                       child: const Text(TTexts.createAccount))),
               const SizedBox(height: TSizes.spaceBtwInputFields),

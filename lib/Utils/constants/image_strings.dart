@@ -37,5 +37,6 @@ class TImages {
   //payment status
   static const String success = "assets/icons/paymentSuccess.gif";
 
-  // shipping
+  //loading
+  static const String loading = "assets/logos/loading.json";
 }

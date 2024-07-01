@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Feature/Authentication/Controller.onbording/onbordingController.dart';
+import 'package:flutter_application_1/Feature/Authentication/controller/Controller.onbording/onbordingController.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
