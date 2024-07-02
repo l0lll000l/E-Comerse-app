@@ -3,9 +3,10 @@ import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
 import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/ADDRESS/address.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/order.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/profile/Profile/profile_screen.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/profile_screen.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/cart_screen.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userprofile.dart';
@@ -20,6 +21,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -43,8 +45,8 @@ class Profile extends StatelessWidget {
                   OnTap: () {
                     Get.to(() => const ProfileScreen());
                   },
-                  name: 'John Doe',
-                  email: 'johndoe@gmail',
+                  name: controller.user.value.fullName,
+                  email: controller.user.value.email,
                   imageurl: TImages.testImage,
                   onPressed: () {
                     Get.to(() => const ProfileScreen());

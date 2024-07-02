@@ -5,10 +5,10 @@ import 'package:iconsax/iconsax.dart';
 class TProfileMenu extends StatelessWidget {
   const TProfileMenu({
     super.key,
-    this.title = 'Name',
+    this.title = '',
     this.icon = Iconsax.arrow_right_34,
     this.onTap,
-    this.value = 'John Doe',
+    this.value = ' ',
   });
   final String title;
   final IconData icon;

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/Data/Repository/User/user_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/verify_email.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/onbording/onbording.dart';
@@ -20,6 +21,7 @@ class AuthenticationRepository extends GetxController {
   ///variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+  User? get authUser => _auth.currentUser;
 
   /// called from main.dart on app launch
   @override
@@ -126,7 +128,24 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  /// logout email password
+  /// forgot password
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again later';
+    }
+  }
+
+  /// logout
   Future<void> logOut() async {
     try {
       await GoogleSignIn().signOut();
@@ -145,10 +164,31 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  /// forgot password
-  Future<void> sendPasswordResetEmail(String email) async {
+  /// delete user
+  Future<void> deleteAccount() async {
     try {
-      await _auth.sendPasswordResetEmail(email: email);
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again later';
+    }
+  }
+
+  /// reauthenticate user
+  Future<void> reAuthenticateUser(
+      {required String email, required String password}) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

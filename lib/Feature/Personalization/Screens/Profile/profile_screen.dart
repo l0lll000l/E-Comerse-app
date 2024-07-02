@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/profile/Profile/Widgets/profile_menu.dart';
+import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/profile_menu.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/re_authenticatr_userlogin.dart';
+import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/update_name.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
@@ -54,14 +60,15 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: TSizes.spaceBtwItems),
                 TProfileMenu(
                   onTap: () {
-                    print('change name');
+                    Get.to(() => const UpdateName());
                   },
-                  value: 'Athul m p',
+                  title: 'Name',
+                  value: controller.user.value.fullName,
                 ),
                 TProfileMenu(
                   onTap: () {},
                   title: 'Username',
-                  value: '@athulmp',
+                  value: controller.user.value.userName,
                 ),
                 const SizedBox(height: TSizes.spaceBtwItems / 2),
                 const Divider(),
@@ -75,22 +82,22 @@ class ProfileScreen extends StatelessWidget {
                 TProfileMenu(
                   title: 'User ID',
                   onTap: () {},
-                  value: '45845',
+                  value: controller.user.value.id,
                 ),
                 TProfileMenu(
                   title: 'Email',
                   onTap: () {},
-                  value: 'athul@gmail.com',
+                  value: controller.user.value.email,
                 ),
                 TProfileMenu(
                   title: 'Phone Number',
                   onTap: () {},
-                  value: '123456789',
+                  value: controller.user.value.phone,
                 ),
                 TProfileMenu(
                   title: 'Gender',
                   onTap: () {},
-                  value: 'male',
+                  value: 'Male',
                 ),
                 TProfileMenu(
                   title: 'Date of Birth',
@@ -101,10 +108,15 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: TSizes.spaceBtwItems / 2),
 
                 /// close account
-                const Center(
-                  child: Text(
-                    'Close Account',
-                    style: TextStyle(color: Colors.red),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      controller.deleteAccountWarning();
+                    },
+                    child: const Text(
+                      'Close Account',
+                      style: TextStyle(color: Colors.red),
+                    ),
                   ),
                 )
               ],
