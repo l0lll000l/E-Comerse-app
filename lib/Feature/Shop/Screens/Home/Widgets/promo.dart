@@ -22,6 +22,13 @@ class TpromoSlider extends StatelessWidget {
         CarouselSlider(
             items: banners
                 .map((url) => TRoundedImage(
+                      padding: EdgeInsets.all(0),
+                      applyImageRadius: true,
+                      isNetworkImage: false,
+                      backGroundColor: Colors.black12,
+                      borderRadius: 15,
+                      imageradius: 15,
+                      fit: BoxFit.cover,
                       imageurl: url,
                     ))
                 .toList(),

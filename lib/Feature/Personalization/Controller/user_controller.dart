@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Data/Repository/User/user_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Model/usermodel.dart';
@@ -12,13 +11,14 @@ import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
   /// variables
   final Rx<UserModel> user = UserModel.empty().obs;
+  final imageUploading = false.obs;
   final profileLoading = true.obs;
   final userRepository = Get.put(UserRepository());
   //variables
@@ -50,24 +50,29 @@ class UserController extends GetxController {
   /// save user data
   Future<void> saveUserRecords(UserCredential? userCredentials) async {
     try {
+      // refresh
+      await fetchUserRecord();
+
       // map data
-      if (userCredentials != null) {
-        final nameparts =
-            UserModel.nameparts(userCredentials.user!.displayName! ?? '');
-        final username = UserModel.generateUserName(
-            userCredentials.user!.displayName! ?? '');
-        final user = UserModel(
-            email: userCredentials.user!.email!,
-            firstName: nameparts[0],
-            lastName:
-                nameparts.length > 1 ? nameparts.sublist(1).join(' ') : '',
-            userName: username,
-            phone: userCredentials.user!.phoneNumber ?? '',
-            profilePic: '',
-            id: userCredentials.user!.uid,
-            password: userCredentials.user!.photoURL ?? '');
-        // save data
-        await userRepository.saveUserRecord(user);
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final nameparts =
+              UserModel.nameparts(userCredentials.user!.displayName! ?? '');
+          final username = UserModel.generateUserName(
+              userCredentials.user!.displayName! ?? '');
+          final user = UserModel(
+              email: userCredentials.user!.email!,
+              firstName: nameparts[0],
+              lastName:
+                  nameparts.length > 1 ? nameparts.sublist(1).join(' ') : '',
+              userName: username,
+              phone: userCredentials.user!.phoneNumber ?? '',
+              profilePic: '',
+              id: userCredentials.user!.uid,
+              password: userCredentials.user!.photoURL ?? '');
+          // save data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       Tloaders.warningSnackBar(
@@ -151,6 +156,35 @@ class UserController extends GetxController {
     } catch (e) {
       TfullScreenLoader.stopLoading();
       Tloaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  /// upload profile picture
+  uploadProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null) {
+        imageUploading.value = true;
+        // upload image
+        final imageurl =
+            await userRepository.uploadImage('Users/Images?Profile/', image);
+// update image
+        Map<String, dynamic> json = {'ProfilePic': imageurl};
+        await userRepository.updateSingleField(json);
+        user.value.profilePic = imageurl;
+        user.refresh();
+        Tloaders.successSnackBar(
+            title: 'congratulations',
+            message: 'your profile picture has been updated successfully');
+      }
+    } catch (e) {
+      Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

@@ -13,6 +13,7 @@ import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userpr
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -41,15 +42,22 @@ class Profile extends StatelessWidget {
                 ),
 
                 /// user profile card
-                UserProfile(
-                  OnTap: () {
-                    Get.to(() => const ProfileScreen());
-                  },
-                  name: controller.user.value.fullName,
-                  email: controller.user.value.email,
-                  imageurl: TImages.testImage,
-                  onPressed: () {
-                    Get.to(() => const ProfileScreen());
+                Obx(
+                  () {
+                    final networkimage = controller.user.value.profilePic;
+                    final image =
+                        networkimage.isNotEmpty ? networkimage : TImages.user;
+                    return UserProfile(
+                      OnTap: () {
+                        Get.to(() => const ProfileScreen());
+                      },
+                      name: controller.user.value.fullName,
+                      email: controller.user.value.email,
+                      imageurl: image,
+                      onPressed: () {
+                        Get.to(() => const ProfileScreen());
+                      },
+                    );
                   },
                 ),
                 const SizedBox(height: TSizes.spaceBtwSections),

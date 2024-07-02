@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/profile_menu.dart';
-import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/re_authenticatr_userlogin.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/update_name.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:flutter_application_1/Utils/loaders/shimmer.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -33,20 +32,30 @@ class ProfileScreen extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: [
-                TRoundedImage(
-                  imageradius: 60,
-                  border: Border.all(color: TColors.black),
-                  applyImageRadius: true,
-                  fit: BoxFit.contain,
-                  padding: const EdgeInsets.all(5),
-                  borderRadius: 60,
-                  height: 120,
-                  width: 120,
-                  imageurl: TImages.user,
-                  backGroundColor: TColors.grey,
-                ),
+                Obx(() {
+                  final networkimage = controller.user.value.profilePic;
+                  final image =
+                      networkimage.isNotEmpty ? networkimage : TImages.user;
+                  if (controller.imageUploading.value) {
+                    return TShimmerEffect(width: 120, height: 120, radius: 80);
+                  } else {
+                    return TRoundedImage(
+                      isNetworkImage: true,
+                      imageradius: 60,
+                      applyImageRadius: true,
+                      fit: BoxFit.cover,
+                      padding: const EdgeInsets.all(5),
+                      borderRadius: 60,
+                      height: 120,
+                      width: 120,
+                      imageurl: image,
+                    );
+                  }
+                }),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.uploadProfilePicture();
+                    },
                     child: const Text('Change profile picture')),
                 const SizedBox(height: TSizes.spaceBtwItems / 2),
                 const Divider(),

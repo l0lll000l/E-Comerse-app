@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/circle_image.dart';
+import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
@@ -35,10 +36,17 @@ class UserProfile extends StatelessWidget {
               .textTheme
               .bodyMedium!
               .apply(color: TColors.light)),
-      leading: TCircleImage(
-          imageurl: imageurl,
-          backgroundColor: dark ? TColors.dark : TColors.light,
-          overlayColor: null),
+      leading: TRoundedImage(
+        isNetworkImage: true,
+        imageradius: 56,
+        applyImageRadius: true,
+        fit: BoxFit.cover,
+        padding: const EdgeInsets.all(2),
+        borderRadius: 56,
+        height: 56,
+        width: 56,
+        imageurl: imageurl,
+      ),
       trailing: IconButton(
         onPressed: onPressed,
         icon: const Icon(Iconsax.edit),
