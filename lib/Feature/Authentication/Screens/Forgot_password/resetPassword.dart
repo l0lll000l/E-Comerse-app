@@ -35,7 +35,7 @@ class ResetPassword extends StatelessWidget {
               /// Image width 60% of screen width
               Image(
                   width: THelperFunctions.screenWidth() * 0.6,
-                  image: const AssetImage(TImages.resetPassword)),
+                  image: const AssetImage(TImages.googlePay)),
               const SizedBox(height: TSizes.spaceBtwItems),
 
               /// title

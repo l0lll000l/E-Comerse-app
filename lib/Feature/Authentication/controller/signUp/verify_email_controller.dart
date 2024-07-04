@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/Common/widgets/success_screen/Success.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
@@ -41,7 +41,7 @@ class VerifyEmailController extends GetxController {
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.offAll(() => SuccessScreen(
-              image: TImages.success,
+              image: TImages.loading,
               title: TTexts.yourAccountCreatedTitle,
               subtitle: TTexts.yourAccountCreatedSubTitle,
               onpressed: () =>
@@ -56,7 +56,7 @@ class VerifyEmailController extends GetxController {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(() => SuccessScreen(
-            image: TImages.success,
+            image: TImages.loading,
             title: TTexts.yourAccountCreatedTitle,
             subtitle: TTexts.yourAccountCreatedSubTitle,
             onpressed: () => AuthenticationRepository.instance.screenRedirect(),

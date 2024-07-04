@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/app.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:get/get.dart';

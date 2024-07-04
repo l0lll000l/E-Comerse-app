@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Model/usermodel.dart';
 import 'package:flutter_application_1/Utils/exceptions/firebase_exceptions.dart';
 import 'package:flutter_application_1/Utils/exceptions/format_exceptions.dart';

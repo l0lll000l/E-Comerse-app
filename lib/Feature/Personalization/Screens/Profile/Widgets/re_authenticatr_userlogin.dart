@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';

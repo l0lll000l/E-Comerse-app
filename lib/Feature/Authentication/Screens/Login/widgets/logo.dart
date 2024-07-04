@@ -18,8 +18,7 @@ class Logo extends StatelessWidget {
       children: [
         Image(
             height: 150,
-            image:
-                AssetImage(dark ? TImages.darkAppLogo : TImages.lightAppLogo)),
+            image: AssetImage(dark ? TImages.googlePay : TImages.googlePay)),
         Text(TTexts.loginTitle, style: Theme.of(context).textTheme.bodyMedium),
         const SizedBox(height: TSizes.sm),
         Text(TTexts.LoginSubTitle,

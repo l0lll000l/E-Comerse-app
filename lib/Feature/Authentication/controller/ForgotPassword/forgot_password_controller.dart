@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Forgot_password/resetPassword.dart';
 import 'package:flutter_application_1/Utils/PopUp/fullscreen_loader.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';

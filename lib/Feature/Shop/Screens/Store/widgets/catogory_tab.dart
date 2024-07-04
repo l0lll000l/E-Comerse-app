@@ -3,14 +3,17 @@ import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/category_model.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/featured_brands.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
+import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class Tcatogory extends StatelessWidget {
-  const Tcatogory({super.key, required this.images});
-  final List<String> images;
+  const Tcatogory({super.key, required this.category});
+
+  final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -30,7 +33,11 @@ class Tcatogory extends StatelessWidget {
                       const FeaturedBrands(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: images
+                        children: [
+                          TImages.acerlogo,
+                          TImages.adidasLogo,
+                          TImages.applePay
+                        ]
                             .map((images) =>
                                 brandTopProductImages(context, images))
                             .toList(),
@@ -54,7 +61,7 @@ class Tcatogory extends StatelessWidget {
         ]);
   }
 
-  Widget brandTopProductImages(context, image) {
+  Widget brandTopProductImages(context, images) {
     return Expanded(
         child: TRoundedContainer(
       showBorder: true,
@@ -62,7 +69,7 @@ class Tcatogory extends StatelessWidget {
       height: 80,
       backgroundColor:
           THelperFunctions.isDarkMode(context) ? TColors.dark : TColors.light,
-      child: Image(fit: BoxFit.contain, image: AssetImage(image)),
+      child: Image(fit: BoxFit.contain, image: AssetImage(images)),
     ));
   }
 }

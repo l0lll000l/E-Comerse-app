@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
+import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
-import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
+import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/productdetails.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/wishList/widget/circularicon.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
@@ -15,8 +14,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TProductCardVertical extends StatelessWidget {
-  const TProductCardVertical({super.key});
-
+  const TProductCardVertical({super.key, this.product});
+  final dynamic product;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -43,10 +42,14 @@ class TProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   ///thumbnail
-                  const TRoundedImage(
+                  TRoundedImage(
+                      onPressed: () {
+                        print(product['image']);
+                      },
                       padding: EdgeInsets.all(0),
                       fit: BoxFit.contain,
-                      imageurl: TImages.product1),
+                      isNetworkImage: true,
+                      imageurl: product['image']),
                   Positioned(
                     left: 0,
                     top: 12,

@@ -11,7 +11,7 @@ import 'package:flutter_application_1/Utils/constants/sizes.dart';
 class FeaturedBrands extends StatelessWidget {
   const FeaturedBrands({
     super.key,
-    this.imageurl = TImages.testImage,
+    this.imageurl = TImages.nikeLogo,
     this.showBorder = false,
     this.onTap,
   });

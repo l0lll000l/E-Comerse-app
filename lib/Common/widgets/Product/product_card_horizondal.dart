@@ -42,7 +42,7 @@ class TProductCardHorrizondal extends StatelessWidget {
                     height: 120,
                     width: 120,
                     backGroundColor: dark ? TColors.grey : HexColor('#F4F1F8'),
-                    imageurl: TImages.product5,
+                    imageurl: TImages.productImage10,
                     applyImageRadius: true,
                   ),
 

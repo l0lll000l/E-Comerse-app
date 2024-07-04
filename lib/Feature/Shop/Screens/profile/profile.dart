@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/ADDRESS/address.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/order.dart';

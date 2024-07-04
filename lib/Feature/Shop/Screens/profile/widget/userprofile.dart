@@ -12,7 +12,7 @@ class UserProfile extends StatelessWidget {
     required this.name,
     required this.email,
     this.onPressed,
-    this.imageurl = TImages.testImage,
+    this.imageurl = TImages.nikeLogo,
     this.OnTap,
   });
   final String name, email;

@@ -54,14 +54,25 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/fonts/
-    - assets/icons/
-    - assets/logos/
-    - assets/images/
-    - assets/images/onbording/
-    - assets/images/image/
-    - assets/images/banner/
-    - assets/images/product/
+    # - assets/fonts/
+    # - assets/icons/
+    # - assets/logos/
+    # - assets/images/
+    # - assets/images/onbording/
+    # - assets/images/image/
+    # - assets/images/banner/
+    # - assets/images/product/
+    - assets/icons/brands/
+    - assets/icons/categories/
+    - assets/icons/payment_methods/
+    - assets/images/animations/
+    - assets/images/banners/
+    - assets/images/content/
+    - assets/images/on_boarding_images/
+    - assets/images/products/
+    - assets/images/logos/
+
+
   # example:
   # fonts:
   #   - family: Schyler

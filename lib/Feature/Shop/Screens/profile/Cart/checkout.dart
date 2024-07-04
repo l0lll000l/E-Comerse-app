@@ -78,7 +78,7 @@ class CheckOutPage extends StatelessWidget {
           ///success screen
           onPressed: () {
             Get.to(() => SuccessScreen(
-                  image: TImages.testImage,
+                  image: TImages.nikeLogo,
                   onpressed: () {
                     controller.selectedIndex.value = 0;
                     Get.to(() => const NavigationMenu());

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
 import 'package:flutter_application_1/Utils/Helpers/network_manager.dart';
 import 'package:flutter_application_1/Utils/PopUp/fullscreen_loader.dart';

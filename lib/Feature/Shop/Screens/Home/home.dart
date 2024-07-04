@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
-import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
+import 'package:flutter_application_1/Common/widgets/Shimmer/vertical_product_shimmer.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/homecontroller/banner_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';
@@ -10,20 +12,21 @@ import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dar
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_catogories.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/promo.dart';
-import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          UserController.instance.fetchUserRecord();
+          BannerController.instance.fetchBanners();
         },
       ),
       body: SingleChildScrollView(
@@ -52,13 +55,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     /// Promo slider
-                    const TpromoSlider(
-                      banners: [
-                        TImages.banner1,
-                        TImages.banner2,
-                        TImages.banner3
-                      ],
-                    ),
+                    const TpromoSlider(),
                     const SizedBox(height: TSizes.spaceBtwItems),
                     TsectionHeading(
                       onpressed: () {
@@ -68,10 +65,27 @@ class HomeScreen extends StatelessWidget {
                     ),
 
                     /// Popular products
-                    TGridview(
-                      itemcount: 6,
-                      itemBuilder: (BuildContext, int) =>
-                          const TProductCardVertical(),
+                    Obx(
+                      () {
+                        if (controller.isLoading.value) {
+                          return IVerticalProductShimmer();
+                        }
+                        if (controller.featuredProducts.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'No data found',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          );
+                        }
+                        return TGridview(
+                          mainAxisExtent: 269,
+                          itemcount: 6,
+                          itemBuilder: (_, index) => TProductCardVertical(
+                            product: controller.featuredProducts[index],
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ))

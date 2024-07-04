@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/success_screen/Success.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login.dart';
 import 'package:flutter_application_1/Feature/Authentication/controller/signUp/verify_email_controller.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
@@ -35,7 +35,7 @@ class VerifyEmail extends StatelessWidget {
               /// image
               Image(
                   width: THelperFunctions.screenWidth() * 0.6,
-                  image: const AssetImage(TImages.emailValidationimage)),
+                  image: const AssetImage(TImages.loading)),
               const SizedBox(height: TSizes.spaceBtwItems),
 
               /// Titles and subtitle
@@ -61,7 +61,7 @@ class VerifyEmail extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       Get.to(() => SuccessScreen(
-                          image: TImages.emailValidationimage,
+                          image: TImages.loading,
                           title: TTexts.yourAccountCreatedTitle,
                           subtitle: TTexts.yourAccountCreatedSubTitle,
                           onpressed: () {

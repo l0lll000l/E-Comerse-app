@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Data/Repository/Repository.Authentication/authentication_repository.dart';
+import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Data/Repository/User/user_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Model/usermodel.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/verify_email.dart';

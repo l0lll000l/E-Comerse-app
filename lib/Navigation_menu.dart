@@ -46,9 +46,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    const Store(
-      images: [TImages.testImage, TImages.testImage, TImages.testImage],
-    ),
+    const Store(),
     const WishList(),
     const Profile(),
   ];

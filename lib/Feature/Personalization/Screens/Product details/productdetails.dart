@@ -36,8 +36,8 @@ class ProductDetails extends StatelessWidget {
             children: [
               /// Product image
               const ProductImage(
-                  sliderImage: TImages.product1,
-                  productImages: TImages.product1),
+                  sliderImage: TImages.productImage1,
+                  productImages: TImages.productImage10),
               Padding(
                 padding: const EdgeInsets.only(
                   right: TSizes.defaultSpace,
@@ -121,7 +121,7 @@ class ProductDetails extends StatelessWidget {
                             height: 32,
                             width: 32,
                             fit: BoxFit.contain,
-                            imageurl: TImages.testImage,
+                            imageurl: TImages.nikeLogo,
                             backgroundColor:
                                 dark ? TColors.grey : TColors.light,
                             overlayColor: null),

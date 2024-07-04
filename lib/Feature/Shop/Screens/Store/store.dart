@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/cart_counter_icon.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dar
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/tabbar.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/AllBrands/all_brands.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/BrandProducts/brand_products.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/catogory_tab.dart';
@@ -17,13 +19,16 @@ import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 class Store extends StatelessWidget {
-  const Store({super.key, required this.images});
-  final List<String> images;
+  const Store({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     final dark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: TAppBar(
           title: Text(
@@ -85,25 +90,22 @@ class Store extends StatelessWidget {
                   bottom: TTabBar(
                     isScrollable: true,
                     labelColor: dark ? TColors.light : TColors.primary,
-                    tabs: const [
-                      Tab(child: Text('Sports')),
-                      Tab(child: Text('Furnitures')),
-                      Tab(child: Text('Electronic')),
-                      Tab(child: Text('cloths')),
-                      Tab(child: Text('Cosmetics')),
-                    ],
+                    tabs: categories
+                        .map((category) => Tab(
+                              child: Text(category.name),
+                            ))
+                        .toList(),
                     indicatorColor: TColors.primary,
                   ),
                 ),
               ];
             },
-            body: TabBarView(children: [
-              Tcatogory(images: images),
-              Tcatogory(images: images),
-              Tcatogory(images: images),
-              Tcatogory(images: images),
-              Tcatogory(images: images),
-            ])),
+            body: TabBarView(
+                children: categories
+                    .map((Category) => Tcatogory(
+                          category: Category,
+                        ))
+                    .toList())),
       ),
     );
   }
