@@ -4,18 +4,21 @@ import 'package:flutter_application_1/Common/widgets/Product/product_title_text.
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/productdetails.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/wishList/widget/circularicon.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/shadow.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TProductCardVertical extends StatelessWidget {
-  const TProductCardVertical({super.key, this.product});
-  final dynamic product;
+  const TProductCardVertical({
+    super.key,
+    this.product,
+  });
+  final ProductModel? product;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -43,13 +46,11 @@ class TProductCardVertical extends StatelessWidget {
                 children: [
                   ///thumbnail
                   TRoundedImage(
-                      onPressed: () {
-                        print(product['image']);
-                      },
+                      onPressed: () {},
                       padding: EdgeInsets.all(0),
                       fit: BoxFit.contain,
                       isNetworkImage: true,
-                      imageurl: product['image']),
+                      imageurl: product!.thumbnail),
                   Positioned(
                     left: 0,
                     top: 12,
@@ -85,7 +86,7 @@ class TProductCardVertical extends StatelessWidget {
                     ProductTitleText(
                       textColor: dark ? TColors.light : TColors.dark,
                       smallSize: true,
-                      text: 'Green Nike Air Shoes',
+                      text: product!.title,
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
 
@@ -93,7 +94,7 @@ class TProductCardVertical extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Nike',
+                          product!.brand!.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.labelMedium!.apply(
@@ -114,7 +115,7 @@ class TProductCardVertical extends StatelessWidget {
                       children: [
                         ProductPrice(
                           textColor: dark ? TColors.light : TColors.dark,
-                          price: '30',
+                          price: product!.price.toString(),
                           islarge: true,
                         ),
                         Container(

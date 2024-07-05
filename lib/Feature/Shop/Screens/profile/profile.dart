@@ -8,6 +8,7 @@ import 'package:flutter_application_1/Feature/Shop/Screens/profile/ADDRESS/addre
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/order.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/profile_screen.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/cart_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/upload_data.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userprofile.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
@@ -138,7 +139,9 @@ class Profile extends StatelessWidget {
               icon: Iconsax.document_upload,
               title: 'Load Data',
               subtitle: 'Upload data to your cloud database',
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const Uploaddata());
+              },
             ),
             TsettingMenu(
               icon: Iconsax.location,

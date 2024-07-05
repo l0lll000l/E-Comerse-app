@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Forgot_password/forget_password.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/signUp.dart';
 import 'package:flutter_application_1/Feature/Authentication/controller/login/login_controller.dart';
-import 'package:flutter_application_1/Navigation_menu.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:flutter_application_1/Utils/validators/validator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LoginForm extends StatelessWidget {

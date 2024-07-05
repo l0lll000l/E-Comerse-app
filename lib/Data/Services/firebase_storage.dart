@@ -13,6 +13,8 @@ class IFirebaseStorageService extends GetxController {
 
   final _firebaseStorage = FirebaseStorage.instance;
 
+  /// upload local assets from ide
+  /// return image data list
   Future<Uint8List> getImageDataFromAssets(String path) async {
     try {
       final byteData = await rootBundle.load(path);

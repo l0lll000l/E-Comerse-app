@@ -116,14 +116,14 @@ class TdummyData {
 
   static final List<ProductModel> products = [
     ProductModel(
-        id: '001',
-        price: 135,
-        title: 'green nike shoe',
-        thumbnail: TImages.shoeIcon,
-        productType: 'shoe',
-        stock: 5,
+        id: '002', //
+        price: 135, //
+        title: 'green nike shoe', //
+        thumbnail: TImages.shoeIcon, //
+        productType: 'shoe', //
+        stock: 5, //
         brand: BrandModel(id: '1', name: 'Nike', image: TImages.sportIcon),
-        categoryType: 'Sports',
+        categoryType: 'Sports', //
         date: DateTime.now(),
         images: [TImages.sportIcon, TImages.shoeIcon, TImages.shoeIcon],
         productAttributes: [

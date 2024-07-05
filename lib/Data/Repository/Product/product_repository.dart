@@ -1,35 +1,43 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Data/Services/firebase_storage.dart';
-import 'package:flutter_application_1/Feature/Shop/Model/product_attribute_model.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/exceptions/firebase_exceptions.dart';
 import 'package:flutter_application_1/Utils/exceptions/platform_exceptions.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
   /// get limited featured products
-  Future<List<ProductModel>> GetFeaturedProducts() async {
+  Future<List<ProductModel>> getFeaturedProducts() async {
     try {
+      if (kDebugMode) {
+        print('==================product repository==================');
+        final snap = await _db.collection('Products').get();
+        print(snap.docs.length);
+      }
       final snapShot = await _db
           .collection('Products')
-          .where('ÍsFeatured', isEqualTo: true)
+          .where('IsFeatured', isEqualTo: true)
           .limit(4)
           .get();
+
+      if (kDebugMode) {
+        print('==================product repository==================');
+        print(snapShot.docs.length);
+      }
       return snapShot.docs.map((e) => ProductModel.fromSnapShot(e)).toList();
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
+      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }

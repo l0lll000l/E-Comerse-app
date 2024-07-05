@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
 import 'package:flutter_application_1/Common/widgets/Shimmer/vertical_product_shimmer.dart';
-import 'package:flutter_application_1/Feature/Shop/Controller/homecontroller/banner_controller.dart';
-import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
-
-import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';
-import 'package:flutter_application_1/Common/widgets/AppBar/search_container.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_catogories.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/promo.dart';
-
+import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,7 +22,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          BannerController.instance.fetchBanners();
+          ProductController.instance.fetchFeaturedProducts();
         },
       ),
       body: SingleChildScrollView(
@@ -79,12 +75,13 @@ class HomeScreen extends StatelessWidget {
                           );
                         }
                         return TGridview(
-                          mainAxisExtent: 269,
-                          itemcount: 6,
-                          itemBuilder: (_, index) => TProductCardVertical(
-                            product: controller.featuredProducts[index],
-                          ),
-                        );
+                            mainAxisExtent: 269,
+                            itemcount: controller.featuredProducts.length,
+                            itemBuilder: (_, index) {
+                              final product =
+                                  controller.featuredProducts[index];
+                              return TProductCardVertical(product: product);
+                            });
                       },
                     ),
                   ],
