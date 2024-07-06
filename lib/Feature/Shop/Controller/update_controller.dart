@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter_application_1/Data/Repository/upload_repo.dart';
-import 'package:flutter_application_1/Feature/Shop/Model/product_attribute_model.dart';
-import 'package:flutter_application_1/Feature/Shop/Model/product_variation_model.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';

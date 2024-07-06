@@ -137,7 +137,7 @@ class Profile extends StatelessWidget {
             /// App settings
             TsettingMenu(
               icon: Iconsax.document_upload,
-              title: 'Load Data',
+              title: 'UpLoad Data',
               subtitle: 'Upload data to your cloud database',
               onPressed: () {
                 Get.to(() => const Uploaddata());

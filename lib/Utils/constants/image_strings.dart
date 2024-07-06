@@ -249,4 +249,9 @@ class TImages {
   /// json animation
   static const String loading =
       "assets/images/animations/141397-loading-juggle.json";
+
+  //// no image
+
+  static const String noImage =
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tJsOcuZu3wlTwhNp9XJTs8QbIYr.jpg";
 }

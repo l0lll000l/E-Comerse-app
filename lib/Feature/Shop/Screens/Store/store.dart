@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/cart_counter_icon.dart';
@@ -7,12 +6,11 @@ import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart
 import 'package:flutter_application_1/Common/widgets/AppBar/tabbar.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/AllBrands/all_brands.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/BrandProducts/brand_products.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/catogory_tab.dart';
-
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/featured_brands.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
@@ -25,6 +23,7 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = ProductController.instance;
     final categories = CategoryController.instance.featuredCategories;
     final dark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(

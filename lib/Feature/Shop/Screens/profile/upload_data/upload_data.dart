@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/homecontroller/banner_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_banner.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_category.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_screen.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
@@ -21,6 +25,7 @@ class Uploaddata extends StatelessWidget {
                 child: Column(
               children: [
                 TAppBar(
+                  showBackArrow: true,
                   title: Text(
                     'Upload Data',
                     style: Theme.of(context)
@@ -29,7 +34,7 @@ class Uploaddata extends StatelessWidget {
                         .apply(color: TColors.light),
                   ),
                 ),
-                SizedBox(height: TSizes.spaceBtwItems * 2),
+                const SizedBox(height: TSizes.spaceBtwItems * 2),
               ],
             )),
             TsettingMenu(
@@ -38,6 +43,24 @@ class Uploaddata extends StatelessWidget {
               subtitle: 'Upload your products',
               onPressed: () {
                 Get.to(() => UploadProducts());
+              },
+            ),
+            TsettingMenu(
+              icon: Iconsax.safe_home,
+              title: 'Upload Banner',
+              subtitle: 'Upload your Banners',
+              onPressed: () {
+                BannerController.instance.isLoading.value = false;
+                Get.to(() => const UploadBanner());
+              },
+            ),
+            TsettingMenu(
+              icon: Iconsax.safe_home,
+              title: 'Upload Category',
+              subtitle: 'Upload your categories',
+              onPressed: () {
+                CategoryController.instance.isLoading.value = false;
+                Get.to(() => const UploadCategory());
               },
             ),
           ],

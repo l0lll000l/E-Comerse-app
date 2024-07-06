@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 
 class ImageSlider extends StatelessWidget {
-  const ImageSlider({
-    super.key,
-    this.sliderImage = TImages.banner1,
-  });
-  final String sliderImage;
+  const ImageSlider({super.key, this.sliderImage = const []});
+  final List<String> sliderImage;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,6 +15,7 @@ class ImageSlider extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
+            final image = sliderImage[index];
             return TRoundedImage(
               onPressed: () {},
               backGroundColor: Colors.white,
@@ -29,13 +26,14 @@ class ImageSlider extends StatelessWidget {
               borderRadius: 15,
               height: 60,
               width: 60,
-              imageurl: sliderImage,
+              isNetworkImage: true,
+              imageurl: image,
             );
           },
           separatorBuilder: (context, index) {
             return const SizedBox(width: 6);
           },
-          itemCount: 5),
+          itemCount: sliderImage.length),
     );
   }
 }

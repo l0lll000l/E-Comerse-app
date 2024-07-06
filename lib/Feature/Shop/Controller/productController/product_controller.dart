@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/Data/Repository/Product/product_repository.dart';
-import 'package:flutter_application_1/Data/Services/dummy_data.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
 import 'package:get/get.dart';

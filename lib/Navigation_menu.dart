@@ -5,7 +5,6 @@ import 'package:flutter_application_1/Feature/Shop/Screens/profile/profile.dart'
 import 'package:flutter_application_1/Feature/Shop/Screens/wishList/wishlist.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

@@ -9,17 +9,32 @@ import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/product_attributes.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/rating_and_share.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/productReviews/productreview.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/enums.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
+
 import '../../../../Utils/Helpers/helper_functions.dart';
 import 'widgets/product_image_slider.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  const ProductDetails({
+    super.key,
+    this.discountPercentage = '0',
+    this.sliderImage = const [],
+    required this.productImage,
+    this.product,
+  });
+  final String discountPercentage;
+
+  final String productImage;
+
+  final ProductModel? product;
+
+  final List<String> sliderImage;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +50,8 @@ class ProductDetails extends StatelessWidget {
           child: Column(
             children: [
               /// Product image
-              const ProductImage(
-                  sliderImage: TImages.productImage1,
-                  productImages: TImages.productImage10),
+              ProductImage(
+                  sliderImage: sliderImage, productImages: productImage),
               Padding(
                 padding: const EdgeInsets.only(
                   right: TSizes.defaultSpace,
@@ -59,7 +73,7 @@ class ProductDetails extends StatelessWidget {
                           padding:
                               const EdgeInsets.symmetric(vertical: TSizes.xs),
                           child: Text(
-                            '25%',
+                            '$discountPercentage% OFF',
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge!
@@ -67,7 +81,7 @@ class ProductDetails extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems),
-                        Text('\$250',
+                        Text('\$${product!.price} ' ?? '',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
@@ -80,7 +94,7 @@ class ProductDetails extends StatelessWidget {
                         ProductPrice(
                           textColor: dark ? TColors.light : TColors.dark,
                           islarge: true,
-                          price: '170',
+                          price: product!.salePrice.toString(),
                         )
                       ],
                     ),
@@ -88,7 +102,7 @@ class ProductDetails extends StatelessWidget {
 
                     /// Product name
                     ProductTitleText(
-                      text: 'Apple iphone 13',
+                      text: product!.title ?? '',
                       textColor: dark ? TColors.light : TColors.dark,
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -121,15 +135,16 @@ class ProductDetails extends StatelessWidget {
                             height: 32,
                             width: 32,
                             fit: BoxFit.contain,
-                            imageurl: TImages.nikeLogo,
+                            imageurl: product!.brand!.image ?? TImages.noImage,
+                            isNetworkImage: true,
                             backgroundColor:
                                 dark ? TColors.grey : TColors.light,
                             overlayColor: null),
                         const SizedBox(width: 5),
-                        const BrandedText(
+                        BrandedText(
                             brandTextSize: TextSizes.medium,
                             textcolor: TColors.primary,
-                            text: 'Apple',
+                            text: product!.brand!.name ?? 'No brand name',
                             iconcolor: TColors.primary),
                       ],
                     ),
@@ -137,7 +152,7 @@ class ProductDetails extends StatelessWidget {
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
 
                     /// Product attributes
-                    const ProductAttributes(),
+                    ProductAttributes(product: product),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
 
                     /// Add to cart button
@@ -152,7 +167,7 @@ class ProductDetails extends StatelessWidget {
                       title: 'Description',
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems),
-                    const Material(
+                    Material(
                       child: ReadMoreText(
                           colorClickableText: Colors.black,
                           trimLines: 2,
@@ -163,7 +178,7 @@ class ProductDetails extends StatelessWidget {
                               fontSize: 14, fontWeight: FontWeight.w800),
                           lessStyle: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w800),
-                          'this is iphonw 13 description,and this iphone is one of the best product by apple ,design is best and everythin gis best but cant do thing we do on android ',
+                          product!.desctription ?? '',
                           style: TextStyle(
                             fontSize: 15,
                             color: TColors.black,

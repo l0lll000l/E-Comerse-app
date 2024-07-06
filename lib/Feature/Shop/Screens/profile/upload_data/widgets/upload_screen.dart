@@ -224,6 +224,8 @@ class UploadProducts extends StatelessWidget {
                   },
                   child: const Text('product image 3')),
               const SizedBox(height: TSizes.spaceBtwInputFields),
+
+              /// Brand
               TextFormField(
                 onChanged: (value) {
                   _brandid = value;
@@ -272,6 +274,8 @@ class UploadProducts extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
+
+              /// update attributes
               const TsectionHeading(
                 title: 'Update Attributes',
               ),
@@ -357,6 +361,8 @@ class UploadProducts extends StatelessWidget {
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
               const SizedBox(height: TSizes.spaceBtwInputFields),
+
+              /// update variations
               const TsectionHeading(
                 title: 'Update variations',
               ),
@@ -440,6 +446,25 @@ class UploadProducts extends StatelessWidget {
                   prefixIcon: Icon(Icons.edit),
                 ),
               ),
+              const SizedBox(height: TSizes.spaceBtwInputFields),
+              OutlinedButton(
+                  onPressed: () async {
+                    try {
+                      final image = await ImagePicker()
+                          .pickImage(source: ImageSource.gallery);
+                      if (image != null) {
+                        // imageUploading.value = true;
+                        // upload image
+                        final image3 = await uploadRepo.uploadImage(
+                            'Products/Images?Brand/', image);
+                        _variationImage = image3;
+                      }
+                    } catch (e) {
+                      Tloaders.errorSnackBar(
+                          title: 'Oh Snap!', message: e.toString());
+                    }
+                  },
+                  child: const Text('variation image 1')),
               const SizedBox(height: TSizes.spaceBtwInputFields),
             ],
           )),

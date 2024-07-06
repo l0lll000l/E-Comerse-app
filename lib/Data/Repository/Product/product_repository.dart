@@ -16,11 +16,6 @@ class ProductRepository extends GetxController {
   /// get limited featured products
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
-      if (kDebugMode) {
-        print('==================product repository==================');
-        final snap = await _db.collection('Products').get();
-        print(snap.docs.length);
-      }
       final snapShot = await _db
           .collection('Products')
           .where('IsFeatured', isEqualTo: true)

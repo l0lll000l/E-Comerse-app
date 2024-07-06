@@ -5,6 +5,8 @@ import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.da
 import 'package:flutter_application_1/Common/widgets/Product/product_card_vertical.dart';
 import 'package:flutter_application_1/Common/widgets/Shimmer/vertical_product_shimmer.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/homecontroller/banner_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_appbar.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Home/Widgets/home_catogories.dart';
@@ -22,6 +24,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          BannerController.instance.fetchBanners();
+          CategoryController.instance.fetchCategory();
           ProductController.instance.fetchFeaturedProducts();
         },
       ),
@@ -80,7 +84,11 @@ class HomeScreen extends StatelessWidget {
                             itemBuilder: (_, index) {
                               final product =
                                   controller.featuredProducts[index];
-                              return TProductCardVertical(product: product);
+
+                              return TProductCardVertical(
+                                product: product,
+                                sliderImageList: product.images ?? [],
+                              );
                             });
                       },
                     ),

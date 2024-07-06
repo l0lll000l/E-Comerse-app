@@ -53,7 +53,7 @@ class HomeCategories extends StatelessWidget {
                     return TverticalImageText(
                       image: category.image,
                       text: category.name,
-                      isNetworkImage: false,
+                      isNetworkImage: true,
                       onTap: () {
                         Get.to(() => const SubCatogoriesScreen());
                       },

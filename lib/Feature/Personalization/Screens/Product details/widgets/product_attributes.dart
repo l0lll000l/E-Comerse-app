@@ -4,15 +4,17 @@ import 'package:flutter_application_1/Common/widgets/Product/product_price.dart'
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/choice_chip.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class ProductAttributes extends StatelessWidget {
-  const ProductAttributes({super.key});
-
+  const ProductAttributes({super.key, required this.product});
+  final ProductModel? product;
   @override
   Widget build(BuildContext context) {
+    bool value3 = false;
     bool value = false;
     final dark = THelperFunctions.isDarkMode(context);
     return Column(
@@ -43,13 +45,13 @@ class ProductAttributes extends StatelessWidget {
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems),
                         ProductPrice(
-                          price: '200',
+                          price: product!.price.toString() ?? '',
                           lineThrough: true,
                           textColor: dark ? TColors.light : TColors.black,
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems),
                         ProductPrice(
-                          price: '150',
+                          price: product!.salePrice.toString() ?? '',
                           textColor: dark ? TColors.light : TColors.black,
                         ),
                       ],
@@ -64,7 +66,8 @@ class ProductAttributes extends StatelessWidget {
                         const SizedBox(width: TSizes.spaceBtwItems),
                         ProductTitleText(
                           smallSize: true,
-                          text: 'In Stock :',
+                          text:
+                              product!.stock > 0 ? 'In Stock ' : 'Out of Stock',
                           textColor: dark ? TColors.light : TColors.black,
                         )
                       ],
@@ -99,31 +102,32 @@ class ProductAttributes extends StatelessWidget {
                 spacing: 8,
                 children: [
                   TchoiceChip(
-                    text: 'Green',
+                    text: product!.productAttributes![0].values![0] ?? '',
                     selected: true,
                     onselected: (selected) {
                       value = selected;
                     },
                   ),
                   TchoiceChip(
-                    text: 'Red',
+                    text: product!.productAttributes![0].values![1] ?? '',
                     selected: true,
                     onselected: (selected) {
                       value = selected;
                     },
                   ),
                   TchoiceChip(
-                    text: 'Purple',
-                    selected: true,
-                    onselected: (selected) {
-                      value = selected;
+                    text: product!.productAttributes![0].values![2] ?? '',
+                    selected: value3,
+                    onselected: (value) {
+                      print('selected');
+                      value3 = !value;
                     },
                   ),
                   TchoiceChip(
-                    text: 'Yellow',
-                    selected: false,
+                    text: product!.productAttributes![0].values![3] ?? '',
+                    selected: value,
                     onselected: (selected) {
-                      value = selected;
+                      value = !selected;
                     },
                   ),
                 ],
@@ -148,16 +152,16 @@ class ProductAttributes extends StatelessWidget {
                   ),
                   TchoiceChip(
                     text: 'Eu 36',
-                    selected: false,
+                    selected: true,
                     onselected: (selected) {
                       value = selected;
                     },
                   ),
                   TchoiceChip(
                     text: 'Eu 38',
-                    selected: true,
+                    selected: value3,
                     onselected: (selected) {
-                      value = selected;
+                      value3 = selected;
                     },
                   ),
                   TchoiceChip(

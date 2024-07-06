@@ -55,4 +55,19 @@ class CategoryController extends GetxController {
   /// load selected data
 
   ///get category / sub category products
+  ///
+  ///update category
+
+  uploadcategory({id, required Map<String, dynamic> json}) async {
+    try {
+      print(json);
+      if (id != null && id.isNotEmpty) {
+        await _categoryRepository.uploadCategory(id, json);
+        Tloaders.successSnackBar(
+            title: 'Success!', message: 'category Updated successfully ');
+      }
+    } catch (e) {
+      Tloaders.errorSnackBar(title: 'Oh Sanp!', message: e.toString());
+    }
+  }
 }

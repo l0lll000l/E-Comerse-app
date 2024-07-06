@@ -39,12 +39,6 @@ class NetworkManager extends GetxController {
   Future<bool> isConnected() async {
     try {
       final result = await _connectivity.checkConnectivity();
-      // if (kDebugMode) {
-      //   print('=================== CONNECTIVITY ===================');
-      //   print('networkcontroller page result = $result ');
-      //   print('networkcontroller page connection status = ${result.first} ');
-      //   print(noConnection);
-      // }
 
       if (result.first == noConnection.first) {
         return false;

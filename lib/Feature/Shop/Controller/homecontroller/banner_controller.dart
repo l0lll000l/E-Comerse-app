@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Data/Repository/Banner/banner_repository.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/banner_model.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
@@ -24,6 +23,8 @@ class BannerController extends GetxController {
     super.onInit();
   }
 
+  final bannersRepo = Get.put(BannerRepository());
+
   /// fetchBanners
 
   Future<void> fetchBanners() async {
@@ -31,7 +32,6 @@ class BannerController extends GetxController {
       //  show loading
       isLoading.value = true;
 
-      final bannersRepo = Get.put(BannerRepository());
       final banners = await bannersRepo.fetchBanners();
 // assign banners
       this.banners.assignAll(banners);
@@ -46,6 +46,18 @@ class BannerController extends GetxController {
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  /// upload bannners
+  uploadBanners({id, required Map<String, dynamic> json}) async {
+    try {
+      print(json);
+      if (id != null && id.isNotEmpty) {
+        await bannersRepo.uploadBanner(id, json);
+      }
+    } catch (e) {
+      Tloaders.errorSnackBar(title: 'Oh Sanp!', message: e.toString());
     }
   }
 }
