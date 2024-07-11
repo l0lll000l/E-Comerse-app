@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Data/Services/firebase_storage.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/category_model.dart';
@@ -35,6 +34,28 @@ class CategoryRepository extends GetxController {
   }
 
   /// get subcategories
+
+  Future<List<CategoryModel>> getSubCategory(
+      {required String categoryId}) async {
+    try {
+      final snapshot = await _db
+          .collection('Categories')
+          .where('ParentId', isEqualTo: categoryId)
+          .get();
+
+      final list = snapshot.docs
+          .map((document) => CategoryModel.fromSnapShot(document))
+          .toList();
+      print(list[0].toJson());
+      return list;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again later';
+    }
+  }
 
   /// upload Categories to firebase
   Future<void> UploadDumyData(List<CategoryModel> categories) async {

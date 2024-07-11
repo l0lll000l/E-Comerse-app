@@ -6,6 +6,7 @@ import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login
 import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/verify_email.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/onbording/onbording.dart';
 import 'package:flutter_application_1/Navigation_menu.dart';
+import 'package:flutter_application_1/Utils/Local_storage/storage.dart';
 import 'package:flutter_application_1/Utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:flutter_application_1/Utils/exceptions/firebase_exceptions.dart';
 import 'package:flutter_application_1/Utils/exceptions/format_exceptions.dart';
@@ -34,8 +35,12 @@ class AuthenticationRepository extends GetxController {
   /// if user is not null and email is verified then go to navigation menu else go to verify email
   screenRedirect() async {
     final user = _auth.currentUser;
+
     if (user != null) {
       if (user.emailVerified) {
+        await TLocalStorage.init(
+          bucketName: user.uid,
+        );
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmail(

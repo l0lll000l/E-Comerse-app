@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Data/Repository/upload_repo.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/update_controller.dart';
-import 'package:flutter_application_1/Feature/Shop/Model/product_variation_model.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
 import 'package:get/get.dart';
@@ -17,7 +14,7 @@ class UploadProducts extends StatelessWidget {
   // final idController = TextEditingController();
   // final priceController = TextEditingController();
 
-  String? _id;
+  String? _id = '0';
   String? _price;
   String? _salePrice;
   String? _title;
@@ -34,14 +31,8 @@ class UploadProducts extends StatelessWidget {
   List<String>? images = [];
   String? _thumbnail;
   String? _color1, _color2, _color3, _color4, _size1, _size2, _size3, _size4;
-  String? _variationId,
-      _variationDescription,
-      _variationImage,
-      _variationColor,
-      _variationSize,
-      _variationSku;
-  int? _variationStock;
-  double? _variationPrice, _variationSalePrice;
+  bool isBrand = false;
+  bool isAttribute = false;
 
   /// variables
   @override
@@ -251,6 +242,7 @@ class UploadProducts extends StatelessWidget {
                     updateController.uploadImage(
                       firebaseLocation: 'Products/brand/',
                     );
+                    isBrand = true;
                   },
                   child: const Text('Brand logo')),
               const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -283,6 +275,7 @@ class UploadProducts extends StatelessWidget {
               TextFormField(
                 onChanged: (value) {
                   _color1 = value;
+                  isAttribute = true;
                 },
                 decoration: const InputDecoration(
                   labelText: 'color1',
@@ -363,109 +356,6 @@ class UploadProducts extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// update variations
-              const TsectionHeading(
-                title: 'Update variations',
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationId = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation id',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationColor = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation color',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationSize = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation size',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationDescription = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation Description',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationPrice = double.parse(value);
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation price',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationSalePrice = double.parse(value);
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation SalePrice',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationSku = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation Sku',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _variationStock = int.parse(value);
-                },
-                decoration: const InputDecoration(
-                  labelText: 'variation SalePrice',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              OutlinedButton(
-                  onPressed: () async {
-                    try {
-                      final image = await ImagePicker()
-                          .pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        // imageUploading.value = true;
-                        // upload image
-                        final image3 = await uploadRepo.uploadImage(
-                            'Products/Images?Brand/', image);
-                        _variationImage = image3;
-                      }
-                    } catch (e) {
-                      Tloaders.errorSnackBar(
-                          title: 'Oh Snap!', message: e.toString());
-                    }
-                  },
-                  child: const Text('variation image 1')),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
             ],
           )),
           SizedBox(
@@ -488,47 +378,31 @@ class UploadProducts extends StatelessWidget {
                     );
                     // add brand
 
-                    updateController.updateBrand(
-                      id: _id,
-                      brandId: _brandid,
-                      name: _brandname,
-                      image: updateController.brandImage.value,
-                      isFeatured: _brandisFeatured,
-                      productCount: _brandproductCount,
-                    );
+                    if (isBrand) {
+                      updateController.updateBrand(
+                        id: _id,
+                        brandId: _brandid,
+                        name: _brandname,
+                        image: updateController.brandImage.value,
+                        isFeatured: _brandisFeatured,
+                        productCount: _brandproductCount,
+                      );
+                    }
 
                     /// add attributes
-                    updateController.updateAttributes(
-                      id: _id,
-                      color1: _color1,
-                      color2: _color2,
-                      color3: _color3,
-                      color4: _color4,
-                      size1: _size1,
-                      size2: _size2,
-                      size3: _size3,
-                      size4: _size4,
-                    );
-
-                    /// variations
-                    final variation1 = ProductVariationModel(
-                        id: _variationId ?? '',
-                        desctription: _variationDescription ?? '',
-                        image: _variationImage ?? '',
-                        price: _variationPrice ?? 0.0,
-                        salePrice: _variationSalePrice ?? 0.0,
-                        sku: _variationSku ?? '',
-                        stock: _variationStock ?? 0,
-                        attributesValues: {
-                          "color": _variationColor ?? '',
-                          "size": _variationSize ?? ''
-                        });
-                    print(variation1.toJson());
-
-                    updateController.updateVariations(
-                      id: _id,
-                      variations: [variation1.toJson()],
-                    );
+                    if (isAttribute) {
+                      updateController.updateAttributes(
+                        id: _id,
+                        color1: _color1,
+                        color2: _color2,
+                        color3: _color3,
+                        color4: _color4,
+                        size1: _size1,
+                        size2: _size2,
+                        size3: _size3,
+                        size4: _size4,
+                      );
+                    }
                   },
                   child: const Text('Submit'))),
         ]),

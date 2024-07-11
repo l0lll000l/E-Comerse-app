@@ -4,18 +4,20 @@ import 'package:flutter_application_1/Common/widgets/Product/product_price.dart'
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/widgets/choice_chip.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/variation_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class ProductAttributes extends StatelessWidget {
   const ProductAttributes({super.key, required this.product});
   final ProductModel? product;
   @override
   Widget build(BuildContext context) {
-    bool value3 = false;
-    bool value = false;
+    final controller = Get.put(VariationController());
+
     final dark = THelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,13 +47,15 @@ class ProductAttributes extends StatelessWidget {
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems),
                         ProductPrice(
-                          price: product!.price.toString() ?? '',
+                          price: (product != null ? product!.price : '')
+                              .toString(),
                           lineThrough: true,
                           textColor: dark ? TColors.light : TColors.black,
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems),
                         ProductPrice(
-                          price: product!.salePrice.toString() ?? '',
+                          price: (product != null ? product!.salePrice : '')
+                              .toString(),
                           textColor: dark ? TColors.light : TColors.black,
                         ),
                       ],
@@ -66,8 +70,9 @@ class ProductAttributes extends StatelessWidget {
                         const SizedBox(width: TSizes.spaceBtwItems),
                         ProductTitleText(
                           smallSize: true,
-                          text:
-                              product!.stock > 0 ? 'In Stock ' : 'Out of Stock',
+                          text: (product != null ? product!.stock : 0) > 0
+                              ? 'In Stock '
+                              : 'Out of Stock',
                           textColor: dark ? TColors.light : TColors.black,
                         )
                       ],
@@ -92,88 +97,56 @@ class ProductAttributes extends StatelessWidget {
         /// colors
         Column(
           children: [
-            TsectionHeading(
-              title: 'Colors',
-              textcolor: dark ? TColors.light : TColors.black,
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
-            Material(
-              child: Wrap(
-                spacing: 8,
-                children: [
-                  TchoiceChip(
-                    text: product!.productAttributes![0].values![0] ?? '',
-                    selected: true,
-                    onselected: (selected) {
-                      value = selected;
-                    },
+            ...product!.productAttributes!
+                .map(
+                  (attribute) => Column(
+                    children: [
+                      TsectionHeading(
+                        title:
+                            attribute != null ? attribute.name.toString() : '',
+                        textcolor: dark ? TColors.light : TColors.black,
+                      ),
+                      const SizedBox(height: TSizes.spaceBtwItems / 2),
+                      Material(
+                        child: Obx(
+                          () => Wrap(
+                            spacing: 8,
+                            children: [
+                              ...attribute.values!.map((attributeValue) {
+                                final available = controller
+                                    .getAttributeAvailabilityInVariation(
+                                        product != null
+                                            ? product!.productVariations!
+                                            : [],
+                                        attribute.name!)
+                                    .contains(attributeValue);
+                                final isSelected = controller
+                                        .selectedAttributes[attribute.name] ==
+                                    attributeValue;
+                                return TchoiceChip(
+                                    text: attributeValue != null
+                                        ? attributeValue
+                                        : '',
+                                    selected: isSelected,
+                                    onselected: available
+                                        ? (selected) {
+                                            if (selected && available) {
+                                              controller.onAttributeSelected(
+                                                  product!,
+                                                  attribute.name ?? '',
+                                                  attributeValue);
+                                            }
+                                          }
+                                        : null);
+                              }).toList(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  TchoiceChip(
-                    text: product!.productAttributes![0].values![1] ?? '',
-                    selected: true,
-                    onselected: (selected) {
-                      value = selected;
-                    },
-                  ),
-                  TchoiceChip(
-                    text: product!.productAttributes![0].values![2] ?? '',
-                    selected: value3,
-                    onselected: (value) {
-                      print('selected');
-                      value3 = !value;
-                    },
-                  ),
-                  TchoiceChip(
-                    text: product!.productAttributes![0].values![3] ?? '',
-                    selected: value,
-                    onselected: (selected) {
-                      value = !selected;
-                    },
-                  ),
-                ],
-              ),
-            ),
-
-            /// size
-            TsectionHeading(
-              title: 'Size',
-              textcolor: dark ? TColors.light : TColors.black,
-            ),
-            Material(
-              child: Wrap(
-                spacing: 8,
-                children: [
-                  TchoiceChip(
-                    text: 'Eu 34',
-                    selected: false,
-                    onselected: (selected) {
-                      value = selected;
-                    },
-                  ),
-                  TchoiceChip(
-                    text: 'Eu 36',
-                    selected: true,
-                    onselected: (selected) {
-                      value = selected;
-                    },
-                  ),
-                  TchoiceChip(
-                    text: 'Eu 38',
-                    selected: value3,
-                    onselected: (selected) {
-                      value3 = selected;
-                    },
-                  ),
-                  TchoiceChip(
-                    text: 'Eu 40',
-                    selected: false,
-                    onselected: (selected) {
-                      value = selected;
-                    },
-                  ),
-                ],
-              ),
-            ),
+                )
+                .toList(),
           ],
         ),
       ],

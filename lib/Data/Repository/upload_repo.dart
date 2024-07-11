@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/exceptions/firebase_exceptions.dart';
 import 'package:flutter_application_1/Utils/exceptions/format_exceptions.dart';
 import 'package:flutter_application_1/Utils/exceptions/platform_exceptions.dart';
@@ -14,15 +16,18 @@ class UploadRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   /// Updater any field in specific user collection
-  Future<void> updateSingleField(id, Map<String, dynamic> json) async {
+  Future<void> updateSingleField(
+      {String? collection = 'Products',
+      id,
+      required Map<String, dynamic> json}) async {
     try {
       // await _db.collection("Products").doc(AuthenticationRepository.instance.authUser?.uid).update(json);
 
-      final data = await _db.collection('Products').doc(id).get();
+      final data = await _db.collection(collection!).doc(id).get();
       if (data.exists) {
-        await _db.collection('Products').doc(id).update(json);
+        await _db.collection(collection).doc(id).update(json);
       } else {
-        await _db.collection('Products').doc(id).set(json);
+        await _db.collection(collection).doc(id).set(json);
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -36,6 +41,27 @@ class UploadRepository extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> fetchvariation(String id) async {
+    try {
+      final snapShot =
+          await _db.collection('Products').where('Id', isEqualTo: id).get();
+
+      if (kDebugMode) {
+        print('==================variation repository==================');
+        print(snapShot.docs.length);
+      }
+      return snapShot.docs.map((e) => ProductModel.fromSnapShot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      print('update repo 1 : ${e.toString()}');
+      throw 'Something went wrong. Please try again later';
+    }
+  }
   // /// update Brand
   // Future<void> updateSingleFieldBrand(id, Map<String, dynamic> json) async {
   //   try {

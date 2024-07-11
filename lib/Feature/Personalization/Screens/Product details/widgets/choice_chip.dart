@@ -22,8 +22,8 @@ class TchoiceChip extends StatelessWidget {
         labelStyle: TextStyle(color: selected ? Colors.white : null),
         avatar: iscolor
             ? TCircularContainer(
-                width: 50,
-                height: 50,
+                width: 40,
+                height: 40,
                 backgroundColor: THelperFunctions.getColor(text)!,
               )
             : null,

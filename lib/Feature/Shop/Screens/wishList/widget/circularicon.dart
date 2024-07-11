@@ -14,13 +14,15 @@ class CircleIcon extends StatelessWidget {
     this.lightmodebackground = TColors.light,
     this.darkModebackground = TColors.dark,
     this.iconsize,
+    this.iconColor = Colors.red,
+    this.onPressed,
   });
   final IconData icon;
-
+  final void Function()? onPressed;
   final double? height;
   final double? width;
   final Color lightmode;
-  final Color darkMode;
+  final Color darkMode, iconColor;
   final Color lightmodebackground;
   final Color darkModebackground;
   final double? iconsize;
@@ -32,14 +34,13 @@ class CircleIcon extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
           color: dark
-              ? lightmodebackground.withOpacity(0.9)
-              : darkModebackground.withOpacity(0.9),
+              ? lightmodebackground.withOpacity(0.3)
+              : darkModebackground.withOpacity(0.3),
           borderRadius: BorderRadius.circular(20)),
       child: Center(
         child: IconButton(
-            onPressed: () {},
-            icon:
-                Icon(size: iconsize, icon, color: dark ? darkMode : lightmode)),
+            onPressed: onPressed,
+            icon: Icon(size: iconsize, icon, color: iconColor)),
       ),
     );
   }

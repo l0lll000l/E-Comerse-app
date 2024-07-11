@@ -3,9 +3,12 @@ import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/homecontroller/banner_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/update_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_banner.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_brand.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_category.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_variation.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
@@ -61,6 +64,22 @@ class Uploaddata extends StatelessWidget {
               onPressed: () {
                 CategoryController.instance.isLoading.value = false;
                 Get.to(() => const UploadCategory());
+              },
+            ),
+            TsettingMenu(
+              icon: Iconsax.safe_home,
+              title: 'Upload Variations',
+              subtitle: 'Upload Product Variations',
+              onPressed: () {
+                Get.to(() => const UploadVariations());
+              },
+            ),
+            TsettingMenu(
+              icon: Iconsax.safe_home,
+              title: 'Upload Brand',
+              subtitle: 'Upload Brands',
+              onPressed: () {
+                Get.to(() => const UploadBrand());
               },
             ),
           ],

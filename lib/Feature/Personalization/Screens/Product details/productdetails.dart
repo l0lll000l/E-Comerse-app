@@ -24,17 +24,11 @@ class ProductDetails extends StatelessWidget {
   const ProductDetails({
     super.key,
     this.discountPercentage = '0',
-    this.sliderImage = const [],
-    required this.productImage,
     this.product,
   });
   final String discountPercentage;
 
-  final String productImage;
-
   final ProductModel? product;
-
-  final List<String> sliderImage;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +45,8 @@ class ProductDetails extends StatelessWidget {
             children: [
               /// Product image
               ProductImage(
-                  sliderImage: sliderImage, productImages: productImage),
+                product: product,
+              ),
               Padding(
                 padding: const EdgeInsets.only(
                   right: TSizes.defaultSpace,
@@ -81,7 +76,7 @@ class ProductDetails extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: TSizes.spaceBtwItems),
-                        Text('\$${product!.price} ' ?? '',
+                        Text('\$${product != null ? product!.price : ''} ',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
@@ -94,7 +89,8 @@ class ProductDetails extends StatelessWidget {
                         ProductPrice(
                           textColor: dark ? TColors.light : TColors.dark,
                           islarge: true,
-                          price: product!.salePrice.toString(),
+                          price: (product != null ? product!.salePrice : '')
+                              .toString(),
                         )
                       ],
                     ),
@@ -102,7 +98,7 @@ class ProductDetails extends StatelessWidget {
 
                     /// Product name
                     ProductTitleText(
-                      text: product!.title ?? '',
+                      text: product != null ? product!.title : '',
                       textColor: dark ? TColors.light : TColors.dark,
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -117,7 +113,10 @@ class ProductDetails extends StatelessWidget {
                                 .apply(
                                     color:
                                         dark ? TColors.light : TColors.dark)),
-                        Text('In Stock',
+                        Text(
+                            (product != null ? product!.stock : 0) > 0
+                                ? 'In Stock '
+                                : 'Out of Stock',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
@@ -135,7 +134,9 @@ class ProductDetails extends StatelessWidget {
                             height: 32,
                             width: 32,
                             fit: BoxFit.contain,
-                            imageurl: product!.brand!.image ?? TImages.noImage,
+                            imageurl: product != null
+                                ? product!.brand!.image
+                                : TImages.noImage,
                             isNetworkImage: true,
                             backgroundColor:
                                 dark ? TColors.grey : TColors.light,
@@ -144,7 +145,9 @@ class ProductDetails extends StatelessWidget {
                         BrandedText(
                             brandTextSize: TextSizes.medium,
                             textcolor: TColors.primary,
-                            text: product!.brand!.name ?? 'No brand name',
+                            text: product != null
+                                ? product!.brand!.name
+                                : 'No brand name',
                             iconcolor: TColors.primary),
                       ],
                     ),
@@ -174,22 +177,23 @@ class ProductDetails extends StatelessWidget {
                           trimMode: TrimMode.Line,
                           trimCollapsedText: ' Show more',
                           trimExpandedText: ' Show less',
-                          moreStyle: TextStyle(
+                          moreStyle: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w800),
-                          lessStyle: TextStyle(
+                          lessStyle: const TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w800),
-                          product!.desctription ?? '',
-                          style: TextStyle(
+                          (product != null ? product!.desctription : '')
+                              .toString(),
+                          style: const TextStyle(
                             fontSize: 15,
                             color: TColors.black,
                           )),
                     ),
-                    Divider(),
+                    const Divider(),
 
                     /// reviews
                     TsectionHeading(
                       onpressed: () {
-                        Get.to(() => ProductReviews());
+                        Get.to(() => const ProductReviews());
                       },
                       title: 'Reviews(199)',
                       showActionButton: true,

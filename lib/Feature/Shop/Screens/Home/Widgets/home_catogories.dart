@@ -1,13 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/vertica_image_text.dart';
 import 'package:flutter_application_1/Common/widgets/Shimmer/category_shimmer.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/SubCatogory/sub_categories.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +53,9 @@ class HomeCategories extends StatelessWidget {
                       text: category.name,
                       isNetworkImage: true,
                       onTap: () {
-                        Get.to(() => const SubCatogoriesScreen());
+                        Get.to(() => SubCatogoriesScreen(
+                            category:
+                                categoryController.featuredCategories[index]));
                       },
                     );
                   },

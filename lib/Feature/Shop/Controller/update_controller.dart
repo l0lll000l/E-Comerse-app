@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter_application_1/Data/Repository/upload_repo.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_variation_model.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,6 +19,8 @@ class UpdateController extends GetxController {
   final imageUploading = false.obs;
   final profileLoading = true.obs;
   final uploadRepo = Get.put(UploadRepository());
+  RxList<ProductModel> allProducts = <ProductModel>[].obs;
+  final List<Map<String, dynamic>> variation = <Map<String, dynamic>>[].obs;
 
   uploadImage({
     required String firebaseLocation,
@@ -57,55 +61,59 @@ class UpdateController extends GetxController {
     String? thumbnail,
   }) async {
     try {
+      if (id != null && id.isNotEmpty) {
+        Map<String, dynamic> json = {'Id': id};
+        await uploadRepo.updateSingleField(id: id, json: json);
+      }
       // update brand
       if (price != null && price.isNotEmpty) {
         Map<String, dynamic> json = {'Price': price};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       //sale price
       if (salePrice != null && salePrice.isNotEmpty) {
         Map<String, dynamic> json = {'SalePrice': salePrice};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       //title
       if (title != null && title.isNotEmpty) {
         Map<String, dynamic> json = {'Title': title};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       //product type
       if (productType != null && productType.isNotEmpty) {
         Map<String, dynamic> json = {'ProductType': productType};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       //category type
       if (categoryType != null && categoryType.isNotEmpty) {
         Map<String, dynamic> json = {'CategoryType': categoryType};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       //description
       if (description != null && description.isNotEmpty) {
         Map<String, dynamic> json = {'Desctription': description};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       // sku
       if (sku != null && sku.isNotEmpty) {
         Map<String, dynamic> json = {'Sku': sku};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
       // image list
       if (images != null && images.isNotEmpty) {
         Map<String, dynamic> json = {'Images': images};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
 
       //thumbnail
       if (thumbnail != null && thumbnail.isNotEmpty) {
         Map<String, dynamic> json = {'Thumbnail': thumbnail};
-        await uploadRepo.updateSingleField(id, json);
+        await uploadRepo.updateSingleField(id: id, json: json);
       }
 
-      Map<String, dynamic> json = {'Date': DateTime.now().toString()};
-      await uploadRepo.updateSingleField(id, json);
+      // Map<String, dynamic> json = {'Date': DateTime.now().toString()};
+      // await uploadRepo.updateSingleField(id, json);
     } catch (e) {
       log(e.toString());
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
@@ -131,7 +139,7 @@ class UpdateController extends GetxController {
         'ProductCount': productCount ?? 0
       };
       Map<String, dynamic> json = {'Brand': brand};
-      await uploadRepo.updateSingleField(id, json);
+      await uploadRepo.updateSingleField(id: id, json: json);
     } catch (e) {
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
@@ -164,19 +172,34 @@ class UpdateController extends GetxController {
 
       List attributes = [colorModel, sizeModel];
       Map<String, dynamic> json = {"ProductAttributes": attributes};
-      await uploadRepo.updateSingleField(id, json);
+      await uploadRepo.updateSingleField(id: id, json: json);
     } catch (e) {
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
+  void fetchVariation(String id) async {
+    try {
+      final data = await uploadRepo.fetchvariation(id);
+
+      final List<ProductVariationModel>? data1 =
+          (data.elementAt(0).productVariations);
+      final List<Map<String, dynamic>> data2 =
+          data1!.map((e) => e.toJson()).toList();
+      variation.assignAll(data2);
+    } catch (e) {
+      print('update controller 2 : ${e.toString()}');
+      Tloaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
   /// product variation
-  updateVariations({id, List? variations}) async {
+  updateVariations({id, required List variations}) async {
     try {
       Map<String, dynamic> json = {"ProductVariations": variations};
-      await uploadRepo.updateSingleField(id, json);
+      await uploadRepo.updateSingleField(id: id, json: json);
     } catch (e) {
-      print(e.toString());
+      print('update controller 1 : ${e.toString()}');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }

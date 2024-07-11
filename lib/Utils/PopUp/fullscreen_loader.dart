@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/signUp.dart';
-import 'package:flutter_application_1/Feature/Authentication/Screens/SignUp/widgets/sign_upform.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/loaders/animation_loader.dart';
@@ -25,6 +23,7 @@ class TfullScreenLoader {
               children: [
                 SizedBox(height: 250),
                 TAnimationLoaderWidget(
+                  animation: animation,
                   showactionButton: false,
                   actionText: 'okey',
                   text: text,

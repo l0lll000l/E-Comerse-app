@@ -41,4 +41,14 @@ class BrandModel {
         isFeatured: data['IsFeatured'] ?? false,
         productCount: data['ProductCount'] ?? 0);
   }
+  factory BrandModel.fromQuerySnapShot(
+      QueryDocumentSnapshot<Object?> document) {
+    final data = document.data() as Map<String, dynamic>;
+    return BrandModel(
+        id: data['Id'] ?? '',
+        name: data['Name'] ?? '',
+        image: data['Image'] ?? '',
+        isFeatured: data['IsFeatured'] ?? false,
+        productCount: data['ProductCount'] ?? 0);
+  }
 }

@@ -23,7 +23,7 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = ProductController.instance;
+    final productController = Get.put(ProductController());
     final categories = CategoryController.instance.featuredCategories;
     final dark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(
@@ -76,11 +76,15 @@ class Store extends StatelessWidget {
 
                         /// Featured Brands
                         TGridview(
-                            itemcount: 4,
+                            itemcount: productController.featuredBrands.length,
                             mainAxisExtent: 75,
-                            itemBuilder: (BuildContext, int) => FeaturedBrands(
-                                  onTap: () =>
-                                      Get.to(() => const BrandedProducts()),
+                            itemBuilder: (context, index) => FeaturedBrands(
+                                  brand:
+                                      productController.featuredBrands[index],
+                                  onTap: () => Get.to(() => BrandedProducts(
+                                        brand: productController
+                                            .featuredBrands[index],
+                                      )),
                                   showBorder: true,
                                 ))
                       ],

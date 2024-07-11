@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Common/widgets/Product/favourite_icon.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_price.dart';
 import 'package:flutter_application_1/Common/widgets/Product/product_title_text.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Product%20details/productdetails.dart';
-import 'package:flutter_application_1/Feature/Shop/Model/brand_model.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/cart_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/wishList/widget/circularicon.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
+import 'package:flutter_application_1/Utils/constants/enums.dart';
+import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/shadow.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -37,9 +39,6 @@ class TProductCardVertical extends StatelessWidget {
       onTap: () {
         Get.to(() => ProductDetails(
               product: product,
-              productImage: product!.thumbnail ??
-                  'https://firebasestorage.googleapis.com/v0/b/flutter-demo-78cdb.appspot.com/o/Products%2FImages%3FBrand%2Ftshirt_green_collar.png?alt=media&token=0a91e7ae-2a24-440d-b0f5-ba3a96568ec4',
-              sliderImage: sliderImageList,
               discountPercentage: discountPercentage,
             ));
       },
@@ -62,13 +61,12 @@ class TProductCardVertical extends StatelessWidget {
                 children: [
                   ///thumbnail
                   TRoundedImage(
-                      onPressed: () {},
-                      padding: EdgeInsets.all(0),
-                      fit: BoxFit.contain,
-                      isNetworkImage: true,
-                      imageurl: product!.thumbnail != null
-                          ? product!.thumbnail
-                          : 'https://firebasestorage.googleapis.com/v0/b/flutter-demo-78cdb.appspot.com/o/Products%2FImages%3FBrand%2Ftshirt_green_collar.png?alt=media&token=0a91e7ae-2a24-440d-b0f5-ba3a96568ec4'),
+                    onPressed: () {},
+                    padding: EdgeInsets.all(0),
+                    fit: BoxFit.contain,
+                    isNetworkImage: true,
+                    imageurl: product?.thumbnail ?? TImages.noImage,
+                  ),
                   Positioned(
                     left: 0,
                     top: 12,
@@ -78,7 +76,7 @@ class TProductCardVertical extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: TSizes.sm, vertical: TSizes.xs),
                       child: Text(
-                        '$discountPercentage % OFF',
+                        '$discountPercentage% OFF',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -88,7 +86,14 @@ class TProductCardVertical extends StatelessWidget {
                   ),
 
                   /// favorite icon
-                  const Positioned(top: 0, right: 0, child: CircleIcon())
+                  Positioned(
+                      top: 0,
+                      right: 0,
+                      child: FavouriteIcon(
+                        productId: product != null
+                            ? product!.id
+                            : '0000000000000000000',
+                      ))
                 ],
               ),
             ),
@@ -104,7 +109,7 @@ class TProductCardVertical extends StatelessWidget {
                     ProductTitleText(
                       textColor: dark ? TColors.light : TColors.dark,
                       smallSize: true,
-                      text: product!.title ?? '',
+                      text: product != null ? product!.title : '',
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
 
@@ -112,7 +117,8 @@ class TProductCardVertical extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          product!.brand?.name ?? '',
+                          (product != null ? product!.brand?.name : '')
+                              .toString(),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.labelMedium!.apply(
@@ -133,27 +139,53 @@ class TProductCardVertical extends StatelessWidget {
                       children: [
                         ProductPrice(
                           textColor: dark ? TColors.light : TColors.dark,
-                          price: product!.salePrice.toString(),
+                          price: (product != null ? product!.salePrice : '')
+                              .toString(),
                           islarge: true,
                         ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: TColors.black,
-                            borderRadius: BorderRadius.only(
-                                bottomRight:
-                                    Radius.circular(TSizes.productImageRadius),
-                                topLeft: Radius.circular(TSizes.cardRadiusMd)),
-                          ),
-                          child: const SizedBox(
-                            height: TSizes.iconLg * 1.2,
-                            width: TSizes.iconLg * 1.2,
-                            child: Center(
-                              child: Icon(
-                                Iconsax.add,
-                                color: TColors.light,
+                        InkWell(
+                          onTap: () {
+                            print(1);
+                            print(product!.productType);
+                            if (product!.productType != null) {
+                              final cartItem = CartController.instance
+                                  .convertToCartItem(product!, 1);
+                              print(cartItem.toJson());
+
+                              CartController.instance.addOneToCart(cartItem);
+                              print(cartItem.toJson());
+                            }
+                          },
+                          child: Obx(() {
+                            final productQuantity = CartController.instance
+                                .getProductQuantityInCart(product!.id);
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: productQuantity > 0
+                                    ? TColors.primary
+                                    : TColors.black,
+                                borderRadius: const BorderRadius.only(
+                                    bottomRight: Radius.circular(
+                                        TSizes.productImageRadius),
+                                    topLeft:
+                                        Radius.circular(TSizes.cardRadiusMd)),
                               ),
-                            ),
-                          ),
+
+                              /// add to cart button
+                              child: SizedBox(
+                                height: TSizes.iconLg * 1.2,
+                                width: TSizes.iconLg * 1.2,
+                                child: Center(
+                                  child: productQuantity > 0
+                                      ? Text(productQuantity.toString())
+                                      : const Icon(
+                                          Iconsax.add,
+                                          color: TColors.light,
+                                        ),
+                                ),
+                              ),
+                            );
+                          }),
                         )
                       ],
                     )
