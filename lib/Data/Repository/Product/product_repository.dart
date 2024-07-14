@@ -81,7 +81,6 @@ class ProductRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }
@@ -154,7 +153,7 @@ class ProductRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      print('fetch brand by category : ${e.toString()}  ');
+      ('fetch brand by category : ${e.toString()}  ');
       throw 'Something went wrong. Please try again later';
     }
   }
@@ -173,25 +172,25 @@ class ProductRepository extends GetxController {
               .where('CategoryId', isEqualTo: categoryId)
               .limit(limit)
               .get();
-      print('fetch prodyct by category ${productCategoryQuery.docs.length} ');
       List<String> productIds = productCategoryQuery.docs
           .map((docs) => docs['ProductId'] as String)
           .toList();
-      print('fetch prodyct by category ${productIds.length} ');
+
       final productsQuery = await _db
           .collection('Products')
           .where(FieldPath.documentId, whereIn: productIds)
           .get();
-
       List<ProductModel> products = productsQuery.docs
           .map((doc) => ProductModel.fromQuerySnapShot(doc))
           .toList();
+      print(products.length);
       return products;
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
+      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }

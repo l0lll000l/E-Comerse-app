@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/exceptions/firebase_exceptions.dart';
@@ -36,7 +35,6 @@ class UploadRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }
@@ -46,10 +44,6 @@ class UploadRepository extends GetxController {
       final snapShot =
           await _db.collection('Products').where('Id', isEqualTo: id).get();
 
-      if (kDebugMode) {
-        print('==================variation repository==================');
-        print(snapShot.docs.length);
-      }
       return snapShot.docs.map((e) => ProductModel.fromSnapShot(e)).toList();
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -58,7 +52,6 @@ class UploadRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      print('update repo 1 : ${e.toString()}');
       throw 'Something went wrong. Please try again later';
     }
   }

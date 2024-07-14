@@ -35,7 +35,8 @@ class Tcatogory extends StatelessWidget {
             child: Column(
               children: [
                 FutureBuilder(
-                  future: controller.getbrandsByCategory(categoryId: '001'),
+                  future:
+                      controller.getbrandsByCategory(categoryId: category.id),
                   builder: (context, snapshot) {
                     const loader = Column(
                       children: [

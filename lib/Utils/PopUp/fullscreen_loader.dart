@@ -5,10 +5,7 @@ import 'package:flutter_application_1/Utils/loaders/animation_loader.dart';
 import 'package:get/get.dart';
 
 class TfullScreenLoader {
-  static void openLoadingDialog(
-    String text,
-    String animation,
-  ) {
+  static void openLoadingDialog(String text, String animation) {
     showDialog(
       context: Get.overlayContext!,
       builder: (context) => PopScope(

@@ -145,15 +145,11 @@ class TProductCardVertical extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            print(1);
-                            print(product!.productType);
                             if (product!.productType != null) {
                               final cartItem = CartController.instance
                                   .convertToCartItem(product!, 1);
-                              print(cartItem.toJson());
 
                               CartController.instance.addOneToCart(cartItem);
-                              print(cartItem.toJson());
                             }
                           },
                           child: Obx(() {

@@ -18,7 +18,6 @@ class TsingleAddress extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    print(address.toJson());
     final dark = THelperFunctions.isDarkMode(context);
     final controller = AddressController.instance;
 

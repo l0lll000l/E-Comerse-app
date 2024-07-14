@@ -14,13 +14,18 @@ class CartController extends GetxController {
   RxInt productQuantityInCart = 0.obs;
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
   final variationController = Get.put(VariationController());
+  @override
+  void onInit() {
+    loadCartItems();
+    super.onInit();
+  }
 
   /// functions
   void addToCart(ProductModel product) {
-    if (productQuantityInCart.value < 1) {
-      Tloaders.customToast(message: 'Select Quantity');
-      return;
-    }
+    // if (productQuantityInCart.value < 1) {
+    //   Tloaders.customToast(message: 'Select Quantity');
+    //   return;
+    // }
     if (product.productType != null &&
         variationController.selectedVariation.value.id.isEmpty) {
       Tloaders.customToast(message: 'Select Variation');
@@ -62,8 +67,10 @@ class CartController extends GetxController {
 
     if (index >= 0) {
       cartItems[index].quantity++;
+      updateCart();
     } else {
       cartItems.add(item);
+      updateCart();
     }
   }
 
@@ -75,10 +82,12 @@ class CartController extends GetxController {
     if (index >= 0) {
       if (cartItems[index].quantity > 1) {
         cartItems[index].quantity--;
+        updateCart();
       } else {
         cartItems[index].quantity == 1
             ? removeFromCartDialog(index)
             : cartItems.removeAt(index);
+        updateCart();
       }
     }
     updateCart();
@@ -152,7 +161,7 @@ class CartController extends GetxController {
   /// load cart items
   void loadCartItems() {
     final cartItemStrings =
-        TLocalStorage.instance().readData<List<dynamic>>(key: 'cartItems');
+        TLocalStorage.instance().readData<List<dynamic>>(key: 'CartItems');
     if (cartItemStrings != null) {
       cartItems.assignAll(cartItemStrings
           .map((item) => CartItemModel.fromJson(item as Map<String, dynamic>))

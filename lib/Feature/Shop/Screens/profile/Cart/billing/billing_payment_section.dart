@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/checkout_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/widgets/payment_method.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class BillingPaymentSection extends StatelessWidget {
   const BillingPaymentSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final checkoutController = Get.put(CheckOutController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -17,33 +21,15 @@ class BillingPaymentSection extends StatelessWidget {
           title: 'Payment Method',
           buttonTitle: 'Change',
           showActionButton: true,
-          onpressed: () {},
+          onpressed: () {
+            checkoutController.selectedPaymentMethods(context);
+          },
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
-        const PaymentMethod(
-          image: TImages.applePay,
-          name: 'Apple pay',
+        Obx(
+          () => PaymentTile(
+              paymentMethod: checkoutController.selectedPaymentMethod.value),
         ),
-        SizedBox(height: TSizes.spaceBtwItems / 2),
-        const PaymentMethod(
-          image: TImages.paypal,
-          name: 'Paypal',
-        ),
-        SizedBox(height: TSizes.spaceBtwItems / 2),
-        const PaymentMethod(
-          image: TImages.googlePay,
-          name: 'Googlepay',
-        ),
-        SizedBox(height: TSizes.spaceBtwItems / 2),
-        const PaymentMethod(
-          image: TImages.paytm,
-          name: 'Paytm',
-        ),
-        SizedBox(height: TSizes.spaceBtwItems / 2),
-        const PaymentMethod(
-          image: TImages.creditCard,
-          name: 'Card',
-        )
       ],
     );
   }

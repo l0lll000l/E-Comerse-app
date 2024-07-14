@@ -46,7 +46,6 @@ class CategoryRepository extends GetxController {
       final list = snapshot.docs
           .map((document) => CategoryModel.fromSnapShot(document))
           .toList();
-      print(list[0].toJson());
       return list;
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -98,7 +97,6 @@ class CategoryRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }

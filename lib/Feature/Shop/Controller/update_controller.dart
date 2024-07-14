@@ -188,7 +188,6 @@ class UpdateController extends GetxController {
           data1!.map((e) => e.toJson()).toList();
       variation.assignAll(data2);
     } catch (e) {
-      print('update controller 2 : ${e.toString()}');
       Tloaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
@@ -199,7 +198,6 @@ class UpdateController extends GetxController {
       Map<String, dynamic> json = {"ProductVariations": variations};
       await uploadRepo.updateSingleField(id: id, json: json);
     } catch (e) {
-      print('update controller 1 : ${e.toString()}');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }

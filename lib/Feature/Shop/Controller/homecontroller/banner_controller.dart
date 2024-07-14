@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/Data/Repository/Banner/banner_repository.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/banner_model.dart';
 import 'package:flutter_application_1/Utils/loaders/loaders.dart';
@@ -36,11 +35,6 @@ class BannerController extends GetxController {
 // assign banners
       this.banners.assignAll(banners);
       isLoading.value = false;
-      if (kDebugMode) {
-        print('==================banner Controller==================');
-        print('all banner length : ${banners.length}');
-        print(' banner image : ${banners[0].imageUrl}');
-      }
     } catch (e) {
       // Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
@@ -52,7 +46,6 @@ class BannerController extends GetxController {
   /// upload bannners
   uploadBanners({id, required Map<String, dynamic> json}) async {
     try {
-      print(json);
       if (id != null && id.isNotEmpty) {
         await bannersRepo.uploadBanner(id, json);
       }

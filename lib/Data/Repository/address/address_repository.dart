@@ -22,7 +22,6 @@ class AddressRepository extends GetxController {
               AddressModel.fromDocumentSnapShot(documentSnapShot))
           .toList();
     } catch (e) {
-      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }
@@ -40,7 +39,6 @@ class AddressRepository extends GetxController {
           .doc(addressId)
           .update({'SelectedAddress': selected, 'Id': addressId});
     } catch (e) {
-      print(e.toString());
       throw 'Something went wrong. Please try again later';
     }
   }

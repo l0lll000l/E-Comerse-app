@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Data/Repository/User/user_repository.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login.dart';
@@ -93,7 +92,6 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      if (kDebugMode) print('something went wrong $e');
       return null;
     }
   }

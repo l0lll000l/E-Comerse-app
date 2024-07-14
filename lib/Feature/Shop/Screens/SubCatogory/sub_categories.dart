@@ -51,10 +51,7 @@ class SubCatogoriesScreen extends StatelessWidget {
                       return widget;
                     }
                     final subcategories = snapshot.data;
-                    if (kDebugMode) {
-                      print('======sub category.dart =========');
-                      print(subcategories![0].name);
-                    }
+
                     return ListView.builder(
                         shrinkWrap: true,
                         itemCount: subcategories!.length,

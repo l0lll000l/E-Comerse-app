@@ -128,7 +128,6 @@ class UploadBrand extends StatelessWidget {
                               collection: 'Brands', id: id, json: data);
                         }
                       } catch (e) {
-                        print('error1 :${e.toString()}');
                         Tloaders.errorSnackBar(
                             title: 'Oh Snap!', message: e.toString());
                       }

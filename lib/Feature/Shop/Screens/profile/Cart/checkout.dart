@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/success_screen/Success.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/cart_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/order_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/Widgets/cart_item_listview.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/billing_address.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/billing_amount_section.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/billing/billing_payment_section.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/Home/home.dart';
 import 'package:flutter_application_1/Navigation_menu.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
@@ -21,7 +22,8 @@ class CheckOutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
+    final cartController = CartController.instance;
+    final orderController = Get.put(OrderController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: TAppBar(
@@ -73,21 +75,20 @@ class CheckOutPage extends StatelessWidget {
       ),
 
       ///checkout button
-      bottomNavigationBar: ElevatedButton(
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
 
-          ///success screen
-          onPressed: () {
-            Get.to(() => SuccessScreen(
-                  image: TImages.nikeLogo,
-                  onpressed: () {
-                    controller.selectedIndex.value = 0;
-                    Get.to(() => const NavigationMenu());
-                  },
-                  title: 'success',
-                  subtitle: 'your order has been placed',
-                ));
-          },
-          child: const Text('checkout \$270')),
+            ///success screen
+            onPressed: () {
+              orderController.processOrders(
+                  cartController.totalCartprice.value +
+                      40 +
+                      cartController.totalCartprice.value * 3 / 100);
+            },
+            child: Text(
+                'checkout  ${cartController.totalCartprice.value + 40 + cartController.totalCartprice.value * 3 / 100}')),
+      ),
     );
   }
 }

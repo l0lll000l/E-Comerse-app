@@ -25,8 +25,8 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    email.text = localStorage.read('REMEMBER_ME_EMAIL');
-    password.text = localStorage.read('REMEMBER_ME_PASSWORD');
+    email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
+    password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
   }
 
   /// login with email and password
@@ -74,7 +74,7 @@ class LoginController extends GetxController {
     try {
       // start loading
       TfullScreenLoader.openLoadingDialog(
-          'We are processing your information', TImages.loading);
+          'We are processing your information', TImages.loginloading);
       // check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
 

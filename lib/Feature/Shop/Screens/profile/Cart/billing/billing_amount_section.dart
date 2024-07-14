@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/cart_controller.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
 class TbillingAmountSection extends StatelessWidget {
@@ -6,6 +7,7 @@ class TbillingAmountSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
     return Column(
       children: [
         Row(
@@ -13,7 +15,8 @@ class TbillingAmountSection extends StatelessWidget {
             Expanded(
                 child: Text('Subtotal',
                     style: Theme.of(context).textTheme.bodyMedium)),
-            Text('\$256', style: Theme.of(context).textTheme.bodyMedium),
+            Text(controller.totalCartprice.toString(),
+                style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
         SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -31,7 +34,8 @@ class TbillingAmountSection extends StatelessWidget {
             Expanded(
                 child: Text('Tax Fee',
                     style: Theme.of(context).textTheme.bodyMedium)),
-            Text('\$2', style: Theme.of(context).textTheme.bodyMedium),
+            Text('${controller.totalCartprice.value * 3 / 100}',
+                style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
         Row(
@@ -39,7 +43,9 @@ class TbillingAmountSection extends StatelessWidget {
             Expanded(
                 child: Text('Order Total',
                     style: Theme.of(context).textTheme.bodyMedium)),
-            Text('\$305', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+                '${controller.totalCartprice.value + 40 + controller.totalCartprice.value * 3 / 100}',
+                style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
       ],

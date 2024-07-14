@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Feature/Shop/Controller/cart_controller.dart';
+import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/wishList/widget/circularicon.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AddToCart extends StatelessWidget {
-  const AddToCart({super.key});
-
+  const AddToCart({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -24,7 +27,15 @@ class AddToCart extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleIcon(
+              CircleIcon(
+                onPressed: () {
+                  if (product!.productType != null) {
+                    final cartItem =
+                        CartController.instance.convertToCartItem(product!, 1);
+
+                    CartController.instance.removeOneFromCart(cartItem);
+                  }
+                },
                 lightmodebackground: TColors.grey,
                 darkModebackground: TColors.grey,
                 height: 40,
@@ -32,12 +43,25 @@ class AddToCart extends StatelessWidget {
                 icon: Iconsax.minus,
               ),
               const SizedBox(width: TSizes.spaceBtwItems),
-              Text('2',
-                  style: Theme.of(context).textTheme.titleSmall!.apply(
-                        color: dark ? TColors.light : TColors.dark,
-                      )),
+              Obx(
+                () => Text(
+                    CartController.instance
+                        .getProductQuantityInCart(product.id)
+                        .toString(),
+                    style: Theme.of(context).textTheme.titleSmall!.apply(
+                          color: dark ? TColors.light : TColors.dark,
+                        )),
+              ),
               const SizedBox(width: TSizes.spaceBtwItems),
-              const CircleIcon(
+              CircleIcon(
+                onPressed: () {
+                  if (product!.productType != null) {
+                    final cartItem =
+                        CartController.instance.convertToCartItem(product!, 1);
+
+                    CartController.instance.addOneToCart(cartItem);
+                  }
+                },
                 lightmodebackground: TColors.grey,
                 darkModebackground: TColors.grey,
                 height: 40,

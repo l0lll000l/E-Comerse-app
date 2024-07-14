@@ -1,13 +1,14 @@
+import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
-import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:lottie/lottie.dart';
 
 class TAnimationLoaderWidget extends StatelessWidget {
   const TAnimationLoaderWidget(
       {super.key,
-      this.animation = TImages.loading,
+      this.animation = TImages.verifying,
       required this.text,
       required this.showactionButton,
       this.actionText,
@@ -23,11 +24,16 @@ class TAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(animation,
-              width: MediaQuery.of(context).size.width * 0.8),
-          SizedBox(height: TSizes.defaultSpace),
-          Text(text, style: Theme.of(context).textTheme.bodyMedium),
-          SizedBox(height: TSizes.defaultSpace),
+          DotLottieLoader.fromAsset(animation,
+              frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
+            if (dotlottie != null) {
+              return Lottie.memory(dotlottie.animations.values.single,
+                  width: THelperFunctions.screenWidth() * 0.9,
+                  height: THelperFunctions.screenHeight() * 0.6);
+            } else {
+              return Container();
+            }
+          }),
           showactionButton
               ? SizedBox(
                   width: 250,

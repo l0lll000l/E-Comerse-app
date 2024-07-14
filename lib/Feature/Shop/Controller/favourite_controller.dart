@@ -47,7 +47,6 @@ class FavouritesController extends GetxController {
   }
 
   void saveFavouritesToStorage() {
-    print(favourites);
     final encodedFavourites = json.encode(favourites);
     TLocalStorage.instance()
         .saveData(key: 'favourites', value: encodedFavourites);

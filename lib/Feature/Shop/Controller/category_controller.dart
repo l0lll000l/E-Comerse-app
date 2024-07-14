@@ -57,13 +57,8 @@ class CategoryController extends GetxController {
     try {
       final products =
           await _categoryRepository.getSubCategory(categoryId: categoryId);
-      if (kDebugMode) {
-        print('================category controller1 ===============');
-        print(products.length);
-      }
       return products;
     } catch (e) {
-      print('error2: ${e.toString()} ');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
@@ -74,19 +69,10 @@ class CategoryController extends GetxController {
   Future<List<ProductModel>> GetProductByCategory(
       {String categoryId = '001', int limit = -1}) async {
     try {
-      if (kDebugMode) {
-        print('================category controller2 ===============');
-        print('products');
-      }
       final products = await productRepository.fetchProductsByCategory(
           categoryId: categoryId, limit: limit);
-      if (kDebugMode) {
-        print('================category controller ===============');
-        print(products.length);
-      }
       return products;
     } catch (e) {
-      print('error2: ${e.toString()} ');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
@@ -97,7 +83,6 @@ class CategoryController extends GetxController {
 
   uploadcategory({id, required Map<String, dynamic> json}) async {
     try {
-      print(json);
       if (id != null && id.isNotEmpty) {
         await _categoryRepository.uploadCategory(id, json);
         Tloaders.successSnackBar(

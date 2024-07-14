@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/Data/Repository/Product/product_repository.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/brand_model.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
@@ -34,7 +33,6 @@ class ProductController extends GetxController {
       final products = await ProductRepository().getFeaturedProducts();
 
       featuredProducts.assignAll(products);
-      print(featuredProducts[0].brand!.toString());
     } catch (e) {
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
@@ -49,12 +47,9 @@ class ProductController extends GetxController {
       isLoading.value = true;
       // fetch category
       final products = await productRepository.getAllFeaturedBrands();
-      print('Length ${products.length}');
 
       this.featuredBrands = products;
-      print(featuredBrands.length);
     } catch (e) {
-      print('error2: ${e.toString()} ');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
@@ -67,7 +62,6 @@ class ProductController extends GetxController {
           brandId: brandId, limit: limit);
       return products;
     } catch (e) {
-      print('error2: ${e.toString()} ');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
@@ -92,7 +86,6 @@ class ProductController extends GetxController {
           await productRepository.fetchBrandByCategory(categoryId: categoryId);
       return brands;
     } catch (e) {
-      print('error2: ${e.toString()} ');
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
@@ -106,7 +99,7 @@ class ProductController extends GetxController {
           categoryId: categoryId, limit: limit);
       return products;
     } catch (e) {
-      print('error2: ${e.toString()} ');
+      print(e.toString());
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }

@@ -27,7 +27,7 @@ class GoogleFaceBookIcon extends StatelessWidget {
               icon: const Image(
                   width: TSizes.iconMd,
                   height: TSizes.iconMd,
-                  image: AssetImage(TImages.googlePay))),
+                  image: AssetImage(TImages.google))),
         ),
         const SizedBox(width: TSizes.spaceBtwItems),
         Container(
@@ -39,7 +39,7 @@ class GoogleFaceBookIcon extends StatelessWidget {
               icon: const Image(
                   width: TSizes.iconMd,
                   height: TSizes.iconMd,
-                  image: AssetImage(TImages.furnitureIcon))),
+                  image: AssetImage(TImages.facebook))),
         )
       ],
     );

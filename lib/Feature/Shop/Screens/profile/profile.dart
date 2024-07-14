@@ -4,10 +4,10 @@ import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
 import 'package:flutter_application_1/Data/Repository/Authentication/authentication_repository.dart';
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/profile/ADDRESS/address.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/order.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/profile_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/ADDRESS/address.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/Cart/cart_screen.dart';
+import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/order.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/upload_data.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userprofile.dart';
@@ -15,7 +15,6 @@ import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class Profile extends StatelessWidget {

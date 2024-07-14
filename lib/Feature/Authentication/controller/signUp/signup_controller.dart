@@ -29,7 +29,7 @@ class SignUpController extends GetxController {
     try {
       // start loading
       TfullScreenLoader.openLoadingDialog(
-          'We are processing your information', TImages.loading);
+          'We are processing your information', TImages.loginloading);
 
       // check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -81,6 +81,7 @@ class SignUpController extends GetxController {
     } catch (e) {
       // show some error message
       Tloaders.errorSnackBar(message: e.toString(), title: 'oh snap!');
+      Get.back();
     } finally {
       //remove error
       // TfullScreenLoader.stopLoading();

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Feature/Authentication/Screens/Login/login.dart';
 import 'package:get/get.dart';
@@ -26,11 +25,6 @@ class OnbordingController extends GetxController {
   void nextPage() {
     final storage = GetStorage();
     if (currentPageIndex.value == 2) {
-      if (kDebugMode) {
-        print('====================== GET STORAGE =====================');
-        print(storage.read('IsFirstTime'));
-      }
-
       storage.write('IsFirstTime', false);
       Get.offAll(() => const LoginScreen());
     } else {
