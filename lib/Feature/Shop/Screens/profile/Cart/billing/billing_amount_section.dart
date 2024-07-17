@@ -19,7 +19,7 @@ class TbillingAmountSection extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItems / 2),
+        const SizedBox(height: TSizes.spaceBtwItems / 2),
         Row(
           children: [
             Expanded(
@@ -28,7 +28,7 @@ class TbillingAmountSection extends StatelessWidget {
             Text('\$40', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
-        SizedBox(height: TSizes.spaceBtwItems / 2),
+        const SizedBox(height: TSizes.spaceBtwItems / 2),
         Row(
           children: [
             Expanded(

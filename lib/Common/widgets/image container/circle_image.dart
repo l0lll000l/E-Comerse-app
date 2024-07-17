@@ -36,12 +36,12 @@ class TCircleImage extends StatelessWidget {
               fit: fit,
               imageUrl: imageurl,
               progressIndicatorBuilder: (context, url, progress) =>
-                  TShimmerEffect(
+                  const TShimmerEffect(
                 width: 56,
                 height: 56,
                 radius: 56,
               ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             )
           : Image(
               fit: fit,

@@ -45,7 +45,7 @@ class AddressController extends GetxController {
           },
           barrierDismissible: true,
           backgroundColor: Colors.transparent,
-          content: CircularProgressIndicator());
+          content: const CircularProgressIndicator());
       if (selectesAddress.value.id.isNotEmpty) {
         await addressRepository.updateSelectedAddress(
             addressId: selectesAddress.value.id, selected: false);
@@ -90,11 +90,11 @@ class AddressController extends GetxController {
     return showModalBottomSheet(
         context: context,
         builder: (context) => Container(
-              padding: EdgeInsets.all(TSizes.lg),
+              padding: const EdgeInsets.all(TSizes.lg),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TsectionHeading(
+                  const TsectionHeading(
                     title: 'Select Address',
                   ),
                   FutureBuilder(

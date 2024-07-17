@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 
@@ -30,7 +29,7 @@ class TsectionHeading extends StatelessWidget {
                 .apply(color: textcolor),
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
-        SizedBox(width: TSizes.spaceBtwItems),
+        const SizedBox(width: TSizes.spaceBtwItems),
         if (addChild) child!,
         const Spacer(),
         if (showActionButton)

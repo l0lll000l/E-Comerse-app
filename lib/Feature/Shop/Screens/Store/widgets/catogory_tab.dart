@@ -52,10 +52,10 @@ class Tcatogory extends StatelessWidget {
                     final brands = snapshot.data;
                     return ListView.separated(
                       separatorBuilder: (context, index) {
-                        return SizedBox(height: TSizes.spaceBtwItems);
+                        return const SizedBox(height: TSizes.spaceBtwItems);
                       },
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: brands!.length,
                       itemBuilder: (context, index) {
                         final brand = brands[index];
@@ -77,7 +77,7 @@ class Tcatogory extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: products != null
-                                            ? products!
+                                            ? products
                                                 .map((images) =>
                                                     brandTopProductImages(
                                                         context: context,
@@ -115,9 +115,7 @@ class Tcatogory extends StatelessWidget {
                     return TGridview(
                       itemcount: products.length,
                       itemBuilder: (context, index) => TProductCardVertical(
-                        product: products[index] != null
-                            ? products[index]
-                            : ProductModel.empty(),
+                        product: products[index] ?? ProductModel.empty(),
                       ),
                     );
                   },
@@ -131,7 +129,7 @@ class Tcatogory extends StatelessWidget {
   Widget brandTopProductImages({context, String? images = TImages.noImage}) {
     return Expanded(
         child: TRoundedContainer(
-            padding: EdgeInsets.all(TSizes.sm),
+            padding: const EdgeInsets.all(TSizes.sm),
             showBorder: true,
             margin: const EdgeInsets.only(right: TSizes.sm),
             height: 80,

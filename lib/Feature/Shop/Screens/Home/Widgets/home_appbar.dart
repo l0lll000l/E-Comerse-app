@@ -7,7 +7,6 @@ import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:flutter_application_1/Utils/loaders/shimmer.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ThomeAppBar extends StatelessWidget {
   const ThomeAppBar({

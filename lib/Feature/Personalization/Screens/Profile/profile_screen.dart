@@ -5,7 +5,6 @@ import 'package:flutter_application_1/Common/widgets/image%20container/rounded_i
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/profile_menu.dart';
 import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/Widgets/update_name.dart';
-import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/loaders/shimmer.dart';
@@ -37,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                   final image =
                       networkimage.isNotEmpty ? networkimage : TImages.user;
                   if (controller.imageUploading.value) {
-                    return TShimmerEffect(width: 120, height: 120, radius: 80);
+                    return const TShimmerEffect(width: 120, height: 120, radius: 80);
                   } else {
                     return TRoundedImage(
                       isNetworkImage: true,

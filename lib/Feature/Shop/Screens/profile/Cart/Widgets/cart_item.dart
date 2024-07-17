@@ -56,7 +56,7 @@ class TCartItem extends StatelessWidget {
                         .entries
                         .map((e) => TextSpan(children: [
                               TextSpan(
-                                  text: '${e.key}',
+                                  text: e.key,
                                   style: Theme.of(context).textTheme.bodySmall),
                               TextSpan(
                                   text: '${e.value}',

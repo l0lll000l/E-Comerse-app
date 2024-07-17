@@ -4,6 +4,7 @@ import 'package:flutter_application_1/Feature/Shop/Screens/Store/store.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/profile.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/wishList/wishlist.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
+import 'package:flutter_application_1/Utils/Helpers/theme_controller.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -21,7 +22,9 @@ class NavigationMenu extends StatelessWidget {
               indicatorColor: dark
                   ? TColors.light.withOpacity(0.1)
                   : TColors.dark.withOpacity(0.1),
-              backgroundColor: dark ? TColors.dark : TColors.light,
+              backgroundColor: ThemeController.instance.isDarkMode.value
+                  ? TColors.dark
+                  : TColors.light,
               onDestinationSelected: (value) =>
                   controller.selectedIndex.value = value,
               selectedIndex: controller.selectedIndex.value,

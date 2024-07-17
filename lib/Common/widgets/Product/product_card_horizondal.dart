@@ -105,7 +105,7 @@ class TProductCardHorrizondal extends StatelessWidget {
                             textColor: dark ? TColors.light : TColors.dark,
                             smallSize: false,
                           ),
-                          SizedBox(height: TSizes.spaceBtwItems / 2),
+                          const SizedBox(height: TSizes.spaceBtwItems / 2),
 
                           ///brand
                           BrandedText(
@@ -114,7 +114,7 @@ class TProductCardHorrizondal extends StatelessWidget {
                               textcolor: dark ? TColors.light : TColors.dark),
                         ],
                       ),
-                      SizedBox(height: TSizes.spaceBtwItems / 2),
+                      const SizedBox(height: TSizes.spaceBtwItems / 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

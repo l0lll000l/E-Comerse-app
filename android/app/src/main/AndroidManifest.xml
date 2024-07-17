@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
+    
         android:label="flutter_application_1"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
+         <meta-data android:name="firebase_debug_log_enabled" android:value="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
@@ -45,7 +43,7 @@ class RatingAndShare extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(onPressed: () {}, icon: Icon(Icons.share))
+        IconButton(onPressed: () {}, icon: const Icon(Icons.share))
       ],
     );
   }

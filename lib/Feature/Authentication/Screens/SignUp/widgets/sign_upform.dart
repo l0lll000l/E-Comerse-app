@@ -6,7 +6,6 @@ import 'package:flutter_application_1/Utils/constants/sizes.dart';
 import 'package:flutter_application_1/Utils/constants/textString.dart';
 import 'package:flutter_application_1/Utils/validators/validator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -98,7 +97,7 @@ class SignUpForm extends StatelessWidget {
                         icon: Icon(controller.hidePassword.value
                             ? Iconsax.eye
                             : Iconsax.eye_slash)),
-                    prefixIcon: Icon(Iconsax.password_check)),
+                    prefixIcon: const Icon(Iconsax.password_check)),
               ),
             ),
 

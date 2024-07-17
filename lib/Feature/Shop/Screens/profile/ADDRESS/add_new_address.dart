@@ -63,7 +63,7 @@ class AddNewAddress extends StatelessWidget {
                         prefixIcon: Icon(Iconsax.building)),
                   ),
                 ),
-                SizedBox(width: TSizes.spaceBtwItems),
+                const SizedBox(width: TSizes.spaceBtwItems),
                 Expanded(
                   child: TextFormField(
                     onChanged: (value) {
@@ -75,7 +75,7 @@ class AddNewAddress extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: TSizes.spaceBtwItems),
+            const SizedBox(height: TSizes.spaceBtwItems),
             Row(
               children: [
                 Expanded(
@@ -90,7 +90,7 @@ class AddNewAddress extends StatelessWidget {
                         )),
                   ),
                 ),
-                SizedBox(width: TSizes.spaceBtwItems),
+                const SizedBox(width: TSizes.spaceBtwItems),
                 Expanded(
                   child: TextFormField(
                     onChanged: (value) {
@@ -103,7 +103,7 @@ class AddNewAddress extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: TSizes.spaceBtwItems),
+            const SizedBox(height: TSizes.spaceBtwItems),
             TextFormField(
               onChanged: (value) {
                 country = value;
@@ -111,7 +111,7 @@ class AddNewAddress extends StatelessWidget {
               decoration: const InputDecoration(
                   labelText: 'Country', prefixIcon: Icon(Icons.language)),
             ),
-            SizedBox(height: TSizes.spaceBtwItems),
+            const SizedBox(height: TSizes.spaceBtwItems),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -127,7 +127,7 @@ class AddNewAddress extends StatelessWidget {
                         country: country ?? '');
                     controller.addNewAddresses(data);
                   },
-                  child: Text('Save')),
+                  child: const Text('Save')),
             )
           ])),
         ),

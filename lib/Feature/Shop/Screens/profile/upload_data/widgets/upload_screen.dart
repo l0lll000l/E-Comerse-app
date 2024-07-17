@@ -63,27 +63,6 @@ class UploadProducts extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwInputFields),
               TextFormField(
                 onChanged: (value) {
-                  _price = value;
-                  // controller.price.value = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Price',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _salePrice = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Sale Price',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
                   _title = value;
                 },
                 decoration: const InputDecoration(
@@ -92,15 +71,62 @@ class UploadProducts extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _productType = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Product Type',
-                  prefixIcon: Icon(Icons.edit),
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) {
+                        _price = value;
+                        // controller.price.value = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Price',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: TSizes.spaceBtwInputFields),
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) {
+                        _salePrice = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Sale Price',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                ],
               ),
+
+              const SizedBox(height: TSizes.spaceBtwInputFields),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) {
+                        _productType = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Product Type',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: TSizes.spaceBtwInputFields),
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) => _categoryType = value,
+                      decoration: const InputDecoration(
+                        labelText: 'Category Type',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
               const SizedBox(height: TSizes.spaceBtwInputFields),
               TextFormField(
                 onChanged: (value) {
@@ -111,14 +137,7 @@ class UploadProducts extends StatelessWidget {
                   prefixIcon: Icon(Icons.edit),
                 ),
               ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) => _categoryType = value,
-                decoration: const InputDecoration(
-                  labelText: 'Category Type',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
+
               const SizedBox(height: TSizes.spaceBtwInputFields),
               TextFormField(
                 onChanged: (value) => _description = value,
@@ -127,14 +146,14 @@ class UploadProducts extends StatelessWidget {
                   prefixIcon: Icon(Icons.edit),
                 ),
               ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) => _sku = value,
-                decoration: const InputDecoration(
-                  labelText: 'Sku',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
+              // const SizedBox(height: TSizes.spaceBtwInputFields),
+              // TextFormField(
+              //   onChanged: (value) => _sku = value,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Sku',
+              //     prefixIcon: Icon(Icons.edit),
+              //   ),
+              // ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
               OutlinedButton(
                   onPressed: () async {
@@ -154,66 +173,76 @@ class UploadProducts extends StatelessWidget {
                     }
                   },
                   child: const Text('Add Thumbnail')),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                        onPressed: () async {
+                          try {
+                            final image = await ImagePicker()
+                                .pickImage(source: ImageSource.gallery);
+                            if (image != null) {
+                              // imageUploading.value = true;
+                              // upload image
+                              final image1 = await uploadRepo.uploadImage(
+                                  'Products/Images?Brand/', image);
+                              images!.add(image1);
+                            }
+                          } catch (e) {
+                            Tloaders.errorSnackBar(
+                                title: 'Oh Snap!', message: e.toString());
+                          }
+                        },
+                        child: const Text('Image1')),
+                  ),
+                  Expanded(
+                    child: OutlinedButton(
+                        onPressed: () async {
+                          try {
+                            final image = await ImagePicker()
+                                .pickImage(source: ImageSource.gallery);
+                            if (image != null) {
+                              // imageUploading.value = true;
+                              // upload image
+                              final image2 = await uploadRepo.uploadImage(
+                                  'Products/Images?Brand/', image);
+                              images!.add(image2);
+                            }
+                          } catch (e) {
+                            Tloaders.errorSnackBar(
+                                title: 'Oh Snap!', message: e.toString());
+                          }
+                        },
+                        child: const Text('image2')),
+                  ),
+                  Expanded(
+                    child: OutlinedButton(
+                        onPressed: () async {
+                          try {
+                            final image = await ImagePicker()
+                                .pickImage(source: ImageSource.gallery);
+                            if (image != null) {
+                              // imageUploading.value = true;
+                              // upload image
+                              final image3 = await uploadRepo.uploadImage(
+                                  'Products/Images?Brand/', image);
+                              images!.add(image3);
+                            }
+                          } catch (e) {
+                            Tloaders.errorSnackBar(
+                                title: 'Oh Snap!', message: e.toString());
+                          }
+                        },
+                        child: const Text('image3')),
+                  ),
+                ],
+              ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              OutlinedButton(
-                  onPressed: () async {
-                    try {
-                      final image = await ImagePicker()
-                          .pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        // imageUploading.value = true;
-                        // upload image
-                        final image1 = await uploadRepo.uploadImage(
-                            'Products/Images?Brand/', image);
-                        images!.add(image1);
-                      }
-                    } catch (e) {
-                      Tloaders.errorSnackBar(
-                          title: 'Oh Snap!', message: e.toString());
-                    }
-                  },
-                  child: const Text('Product Image1')),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              OutlinedButton(
-                  onPressed: () async {
-                    try {
-                      final image = await ImagePicker()
-                          .pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        // imageUploading.value = true;
-                        // upload image
-                        final image2 = await uploadRepo.uploadImage(
-                            'Products/Images?Brand/', image);
-                        images!.add(image2);
-                      }
-                    } catch (e) {
-                      Tloaders.errorSnackBar(
-                          title: 'Oh Snap!', message: e.toString());
-                    }
-                  },
-                  child: const Text('Product image2')),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              OutlinedButton(
-                  onPressed: () async {
-                    try {
-                      final image = await ImagePicker()
-                          .pickImage(source: ImageSource.gallery);
-                      if (image != null) {
-                        // imageUploading.value = true;
-                        // upload image
-                        final image3 = await uploadRepo.uploadImage(
-                            'Products/Images?Brand/', image);
-                        images!.add(image3);
-                      }
-                    } catch (e) {
-                      Tloaders.errorSnackBar(
-                          title: 'Oh Snap!', message: e.toString());
-                    }
-                  },
-                  child: const Text('product image 3')),
+
+              const TsectionHeading(
+                title: 'Brand',
+              ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// Brand
@@ -237,34 +266,49 @@ class UploadProducts extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
-              OutlinedButton(
-                  onPressed: () {
-                    updateController.uploadImage(
-                      firebaseLocation: 'Products/brand/',
-                    );
-                    isBrand = true;
-                  },
-                  child: const Text('Brand logo')),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _brandisFeatured = value == 'true' ? true : false;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'IsFearted  true / false  ',
-                  prefixIcon: Icon(Icons.edit),
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                        onPressed: () {
+                          updateController.uploadImage(
+                            firebaseLocation: 'Products/brand/',
+                          );
+                          isBrand = true;
+                        },
+                        child: const Text('Brand logo')),
+                  ),
+                ],
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _brandproductCount = int.parse(value);
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Product count',
-                  prefixIcon: Icon(Icons.edit),
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) {
+                        _brandisFeatured = value == 'true' ? true : false;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'IsFearted  true / false  ',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: TSizes.spaceBtwItems),
+                  Expanded(
+                    child: TextFormField(
+                      onChanged: (value) {
+                        _brandproductCount = int.parse(value);
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Product count',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                ],
               ),
+
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// update attributes
@@ -272,87 +316,97 @@ class UploadProducts extends StatelessWidget {
                 title: 'Update Attributes',
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _color1 = value;
-                  isAttribute = true;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'color1',
-                  prefixIcon: Icon(Icons.edit),
+
+              /// color
+              SizedBox(
+                height: 65,
+                child: ListWheelScrollView(
+                  itemExtent: 65,
+                  children: [
+                    TextFormField(
+                      onChanged: (value) {
+                        _color1 = value;
+                        isAttribute = true;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'color1',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        _color2 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'color2',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        _color3 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'color3',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        _color4 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'color4',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _color2 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'color2',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _color3 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'color3',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _color4 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'color4',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _size1 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'size1',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _size2 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'size2',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _size3 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'size3',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
-              TextFormField(
-                onChanged: (value) {
-                  _size4 = value;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'size4',
-                  prefixIcon: Icon(Icons.edit),
-                ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwInputFields),
+
+              /// size
+              SizedBox(
+                  height: 65,
+                  child: ListWheelScrollView(itemExtent: 65, children: [
+                    TextFormField(
+                      onChanged: (value) {
+                        _size1 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'size1',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        _size2 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'size2',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        _size3 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'size3',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        _size4 = value;
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'size4',
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                  ])),
+
               const SizedBox(height: TSizes.spaceBtwInputFields),
 
               /// update variations

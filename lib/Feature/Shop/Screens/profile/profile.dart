@@ -11,6 +11,7 @@ import 'package:flutter_application_1/Feature/Shop/Screens/profile/MyOrders/orde
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/upload_data.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/settingsmenu.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/widget/userprofile.dart';
+import 'package:flutter_application_1/Utils/Helpers/theme_controller.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
@@ -160,14 +161,26 @@ class Profile extends StatelessWidget {
               subtitle: 'Set image Quality to be seen',
               trailing: Switch(value: true, onChanged: (value) {}),
             ),
-            SizedBox(height: TSizes.spaceBtwSections / 2),
+            TsettingMenu(
+              icon: Iconsax.image,
+              title: 'dart mode',
+              subtitle: 'Set app theme to dark mode',
+              trailing: Obx(
+                () => Switch(
+                    value: ThemeController.instance.isDarkMode.value,
+                    onChanged: (value) {
+                      ThemeController.instance.changeTheme();
+                    }),
+              ),
+            ),
+            const SizedBox(height: TSizes.spaceBtwSections / 2),
             SizedBox(
                 width: 350,
                 child: OutlinedButton(
                     onPressed: () {
                       AuthenticationRepository.instance.logOut();
                     },
-                    child: Text('LogOut')))
+                    child: const Text('LogOut')))
           ],
         ),
       ),

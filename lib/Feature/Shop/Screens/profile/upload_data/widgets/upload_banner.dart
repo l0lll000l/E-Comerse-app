@@ -14,17 +14,17 @@ class UploadBanner extends StatelessWidget {
   const UploadBanner({super.key});
   @override
   Widget build(BuildContext context) {
-    String? _id;
-    String? _url;
-    bool? _active;
-    String? _targetScreen;
+    String? id;
+    String? url0;
+    bool? active;
+    String? targetScreen;
     return Scaffold(
         appBar: TAppBar(
           leadingOnPressed: () {
             BannerController.instance.fetchBanners();
           },
           showBackArrow: true,
-          title: Text(
+          title: const Text(
             'Upload banners',
           ),
         ),
@@ -37,7 +37,7 @@ class UploadBanner extends StatelessWidget {
                     child: Column(children: [
                   TextFormField(
                     onChanged: (value) {
-                      _id = value;
+                      id = value;
                     },
                     decoration: const InputDecoration(
                       labelText: 'Id',
@@ -59,7 +59,7 @@ class UploadBanner extends StatelessWidget {
                                 .child(image.name);
                             await ref.putFile(File(image.path));
                             final url = await ref.getDownloadURL();
-                            _url = url;
+                            url0 = url;
                             BannerController.instance.isLoading.value = false;
                           }
                         } catch (e) {
@@ -73,7 +73,7 @@ class UploadBanner extends StatelessWidget {
                   /// active
                   TextFormField(
                     onChanged: (value) {
-                      _active = value == 'true' ? true : false;
+                      active = value == 'true' ? true : false;
                     },
                     decoration: const InputDecoration(
                       labelText: 'Active = true/false',
@@ -83,7 +83,7 @@ class UploadBanner extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwInputFields),
                   TextFormField(
                     onChanged: (value) {
-                      _targetScreen = value;
+                      targetScreen = value;
                     },
                     decoration: const InputDecoration(
                       labelText: 'Target Screen',
@@ -100,12 +100,12 @@ class UploadBanner extends StatelessWidget {
                       return ElevatedButton(
                           onPressed: () {
                             final data = BannerModel(
-                                    imageUrl: _url ?? '',
-                                    targetScreen: _targetScreen ?? '',
-                                    active: _active ?? false)
+                                    imageUrl: url0 ?? '',
+                                    targetScreen: targetScreen ?? '',
+                                    active: active ?? false)
                                 .toJson();
                             BannerController.instance
-                                .uploadBanners(id: _id, json: data);
+                                .uploadBanners(id: id, json: data);
                           },
                           child: const Text('Upload'));
                     } else {

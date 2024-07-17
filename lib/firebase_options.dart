@@ -66,4 +66,5 @@ class DefaultFirebaseOptions {
     projectId: 'flutter-demo-78cdb',
     storageBucket: 'flutter-demo-78cdb.appspot.com',
   );
+
 }

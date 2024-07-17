@@ -56,7 +56,7 @@ class TverticalImageText extends StatelessWidget {
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                         )
-                      : Image(fit: fit, image: AssetImage(TImages.nikeLogo)),
+                      : Image(fit: fit, image: const AssetImage(TImages.nikeLogo)),
                 )),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
             SizedBox(

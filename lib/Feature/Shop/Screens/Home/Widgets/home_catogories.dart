@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/vertica_image_text.dart';
@@ -29,7 +28,7 @@ class HomeCategories extends StatelessWidget {
           const SizedBox(height: TSizes.spaceBtwItems),
           Obx(
             () {
-              if (categoryController.isLoading.value) return ICategoryShimmer();
+              if (categoryController.isLoading.value) return const ICategoryShimmer();
               if (categoryController.featuredCategories.isEmpty) {
                 return Center(
                     child: Text('No data found',

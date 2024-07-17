@@ -29,7 +29,7 @@ class CartScreen extends StatelessWidget {
           showactionButton: true,
           actionText: 'Let\'s fill it',
           onPressed: () {
-            Get.off(() => NavigationMenu());
+            Get.off(() => const NavigationMenu());
           },
         );
         return controller.cartItems.isEmpty

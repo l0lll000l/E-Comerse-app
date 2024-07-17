@@ -29,7 +29,7 @@ class UploadVariationScreen extends StatelessWidget {
     final updateController = Get.put(UpdateController());
     return ListView(
         shrinkWrap: true,
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -39,25 +39,35 @@ class UploadVariationScreen extends StatelessWidget {
                   title: 'Update variations',
                 ),
                 const SizedBox(height: TSizes.spaceBtwInputFields),
-                TextFormField(
-                  onChanged: (value) {
-                    id = value;
-                    // controller.id.value = value;
-                  },
-                  decoration: const InputDecoration(
-                    labelText: 'Id',
-                    prefixIcon: Icon(Icons.edit),
-                  ),
-                ),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
-                TextFormField(
-                  onChanged: (value) {
-                    variationId = value;
-                  },
-                  decoration: const InputDecoration(
-                    labelText: 'variation id',
-                    prefixIcon: Icon(Icons.edit),
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        onChanged: (value) {
+                          id = value;
+                          // controller.id.value = value;
+                        },
+                        decoration: const InputDecoration(
+                          labelText: 'Id',
+                          prefixIcon: Icon(Icons.edit),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: TSizes.spaceBtwInputFields,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        onChanged: (value) {
+                          variationId = value;
+                        },
+                        decoration: const InputDecoration(
+                          labelText: 'variation id',
+                          prefixIcon: Icon(Icons.edit),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: TSizes.spaceBtwInputFields),
                 TextFormField(
@@ -110,16 +120,15 @@ class UploadVariationScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: TSizes.spaceBtwInputFields),
-                TextFormField(
-                  onChanged: (value) {
-                    variationSku = value;
-                  },
-                  decoration: const InputDecoration(
-                    labelText: 'variation Sku',
-                    prefixIcon: Icon(Icons.edit),
-                  ),
-                ),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
+                // TextFormField(
+                //   onChanged: (value) {
+                //     variationSku = value;
+                //   },
+                //   decoration: const InputDecoration(
+                //     labelText: 'variation Sku',
+                //     prefixIcon: Icon(Icons.edit),
+                //   ),
+                // ),
                 OutlinedButton(
                     onPressed: () async {
                       try {
@@ -170,8 +179,8 @@ class UploadVariationScreen extends StatelessWidget {
                                 variations: variations,
                               );
                             },
-                            child: Text('upload'))
-                        : Text('upload image first'),
+                            child: const Text('upload'))
+                        : const Text('upload image first'),
                   ),
                 )
               ],

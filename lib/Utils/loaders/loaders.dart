@@ -68,7 +68,7 @@ class Tloaders {
         isDismissible: true,
         shouldIconPulse: true,
         colorText: Colors.white,
-        backgroundColor: Color.fromARGB(255, 255, 13, 0),
+        backgroundColor: const Color.fromARGB(255, 255, 13, 0),
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
         margin: const EdgeInsets.all(20),

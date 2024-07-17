@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
-import 'package:flutter_application_1/Common/widgets/Product/rounded_container.dart';
 import 'package:flutter_application_1/Common/widgets/Shimmer/vertical_product_shimmer.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Model/brand_model.dart';
@@ -23,7 +22,7 @@ class BrandedProducts extends StatelessWidget {
       ),
       body: SingleChildScrollView(
           child: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           children: [
             /// Brand
@@ -31,7 +30,7 @@ class BrandedProducts extends StatelessWidget {
               brand: brand,
               showBorder: true,
             ),
-            SizedBox(height: TSizes.spaceBtwItems),
+            const SizedBox(height: TSizes.spaceBtwItems),
 
             /// products
             FutureBuilder(

@@ -19,14 +19,14 @@ class RatingProgressIndicator extends StatelessWidget {
           star,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        SizedBox(width: TSizes.spaceBtwItems / 4),
+        const SizedBox(width: TSizes.spaceBtwItems / 4),
         SizedBox(
           width: TDeviceUtils.getScreenWidth(context) * 0.5,
           child: LinearProgressIndicator(
             value: value,
             backgroundColor: TColors.grey,
             minHeight: 11,
-            valueColor: AlwaysStoppedAnimation(TColors.primary),
+            valueColor: const AlwaysStoppedAnimation(TColors.primary),
             borderRadius: BorderRadius.circular(7),
           ),
         )

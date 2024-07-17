@@ -22,7 +22,7 @@ class VerifyEmail extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(LoginScreen());
+                Get.to(const LoginScreen());
               },
               icon: const Icon(CupertinoIcons.clear))
         ],

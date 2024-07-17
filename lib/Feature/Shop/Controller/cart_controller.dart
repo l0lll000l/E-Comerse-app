@@ -26,12 +26,11 @@ class CartController extends GetxController {
     //   Tloaders.customToast(message: 'Select Quantity');
     //   return;
     // }
-    if (product.productType != null &&
-        variationController.selectedVariation.value.id.isEmpty) {
+    if (variationController.selectedVariation.value.id.isEmpty) {
       Tloaders.customToast(message: 'Select Variation');
       return;
     }
-    if (product.productType != null && product.productType.isNotEmpty) {
+    if (product.productType.isNotEmpty) {
       if (variationController.selectedVariation.value.stock < 1) {
         Tloaders.warningSnackBar(
             title: 'Out of Stock', message: 'Please select another variation');
@@ -110,10 +109,8 @@ class CartController extends GetxController {
 
   /// product model to cartItem model
   CartItemModel convertToCartItem(ProductModel product, int quantity) {
-    if (product.productType != null) {
-      variationController.resetSelectedAttributes();
-    }
-    final variation = variationController.selectedVariation.value;
+    variationController.resetSelectedAttributes();
+      final variation = variationController.selectedVariation.value;
     final isVariation = variation.id.isNotEmpty;
     final price = isVariation
         ? variation.salePrice > 0.0

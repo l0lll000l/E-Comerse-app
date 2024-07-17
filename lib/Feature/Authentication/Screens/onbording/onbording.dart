@@ -70,7 +70,7 @@ class OnBordingPage extends StatelessWidget {
       padding: const EdgeInsets.all(TSizes.defaultSpace),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 0,
           ),
           DotLottieLoader.fromAsset(image,

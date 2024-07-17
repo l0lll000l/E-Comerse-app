@@ -61,7 +61,7 @@ class ProductImage extends StatelessWidget {
                 right: 45,
                 bottom: 30,
                 child: ImageSlider(
-                  sliderImage: images != null ? images : [],
+                  sliderImage: images ?? [],
                 )),
 
             /// appbar

@@ -29,13 +29,11 @@ class AddToCart extends StatelessWidget {
             children: [
               CircleIcon(
                 onPressed: () {
-                  if (product!.productType != null) {
-                    final cartItem =
-                        CartController.instance.convertToCartItem(product!, 1);
+                  final cartItem =
+                      CartController.instance.convertToCartItem(product, 1);
 
-                    CartController.instance.removeOneFromCart(cartItem);
-                  }
-                },
+                  CartController.instance.removeOneFromCart(cartItem);
+                                },
                 lightmodebackground: TColors.grey,
                 darkModebackground: TColors.grey,
                 height: 40,
@@ -55,13 +53,11 @@ class AddToCart extends StatelessWidget {
               const SizedBox(width: TSizes.spaceBtwItems),
               CircleIcon(
                 onPressed: () {
-                  if (product!.productType != null) {
-                    final cartItem =
-                        CartController.instance.convertToCartItem(product!, 1);
+                  final cartItem =
+                      CartController.instance.convertToCartItem(product, 1);
 
-                    CartController.instance.addOneToCart(cartItem);
-                  }
-                },
+                  CartController.instance.addOneToCart(cartItem);
+                                },
                 lightmodebackground: TColors.grey,
                 darkModebackground: TColors.grey,
                 height: 40,
@@ -76,7 +72,7 @@ class AddToCart extends StatelessWidget {
                 style:
                     ElevatedButton.styleFrom(backgroundColor: TColors.primary),
                 onPressed: () {},
-                child: Text('Add to Cart')),
+                child: const Text('Add to Cart')),
           )
         ],
       ),

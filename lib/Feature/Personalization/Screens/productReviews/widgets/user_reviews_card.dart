@@ -49,16 +49,16 @@ class UserReviewsCard extends StatelessWidget {
             trimMode: TrimMode.Line,
             trimCollapsedText: ' Show more',
             trimExpandedText: ' Show less',
-            moreStyle: TextStyle(
+            moreStyle: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w800,
                 color: TColors.primary),
-            lessStyle: TextStyle(
+            lessStyle: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w800,
                 color: TColors.primary),
             userReviewReceived,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 15,
               color: TColors.black,
             )),
@@ -86,16 +86,16 @@ class UserReviewsCard extends StatelessWidget {
                         trimMode: TrimMode.Line,
                         trimCollapsedText: ' Show more',
                         trimExpandedText: ' Show less',
-                        moreStyle: TextStyle(
+                        moreStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w800,
                             color: TColors.primary),
-                        lessStyle: TextStyle(
+                        lessStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w800,
                             color: TColors.primary),
                         companyReviewSend,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           color: TColors.black,
                         ))

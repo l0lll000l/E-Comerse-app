@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/Data/Repository/User/user_repository.dart';
 import 'package:flutter_application_1/Feature/Personalization/Controller/user_controller.dart';
-import 'package:flutter_application_1/Feature/Personalization/Screens/Profile/profile_screen.dart';
-import 'package:flutter_application_1/Feature/Shop/Screens/profile/profile.dart';
 import 'package:flutter_application_1/Navigation_menu.dart';
 import 'package:flutter_application_1/Utils/Helpers/network_manager.dart';
 import 'package:flutter_application_1/Utils/PopUp/fullscreen_loader.dart';

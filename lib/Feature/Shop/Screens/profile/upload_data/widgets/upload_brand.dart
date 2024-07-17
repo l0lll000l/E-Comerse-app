@@ -122,17 +122,15 @@ class UploadBrand extends StatelessWidget {
 
                       /// update brand
                       try {
-                        if (data != null) {
-                          // Map<String, dynamic> json = {'Brand': data};
-                          await uploadRepo.updateSingleField(
-                              collection: 'Brands', id: id, json: data);
-                        }
-                      } catch (e) {
+                        // Map<String, dynamic> json = {'Brand': data};
+                        await uploadRepo.updateSingleField(
+                            collection: 'Brands', id: id, json: data);
+                                            } catch (e) {
                         Tloaders.errorSnackBar(
                             title: 'Oh Snap!', message: e.toString());
                       }
                     },
-                    child: Text('Upolad')),
+                    child: const Text('Upolad')),
               )
             ],
           ),

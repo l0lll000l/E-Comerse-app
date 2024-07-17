@@ -49,7 +49,7 @@ class TAnimationLoaderWidget extends StatelessWidget {
                             .apply(color: TColors.light),
                       )),
                 )
-              : SizedBox()
+              : const SizedBox()
         ],
       ),
     );

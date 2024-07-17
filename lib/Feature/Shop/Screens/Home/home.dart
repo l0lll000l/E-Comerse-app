@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                     Obx(
                       () {
                         if (controller.isLoading.value) {
-                          return IVerticalProductShimmer();
+                          return const IVerticalProductShimmer();
                         }
                         if (controller.featuredProducts.isEmpty) {
                           return Center(

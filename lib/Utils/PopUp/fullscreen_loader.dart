@@ -18,7 +18,7 @@ class TfullScreenLoader {
                 : TColors.light,
             child: Column(
               children: [
-                SizedBox(height: 250),
+                const SizedBox(height: 250),
                 TAnimationLoaderWidget(
                   animation: animation,
                   showactionButton: false,

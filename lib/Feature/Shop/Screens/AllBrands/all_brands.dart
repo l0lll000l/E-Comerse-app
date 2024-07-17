@@ -3,7 +3,6 @@ import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';
 import 'package:flutter_application_1/Common/widgets/Gridview/gridview_layout.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/productController/product_controller.dart';
-import 'package:flutter_application_1/Feature/Shop/Model/brand_model.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/searchProduct/all_products.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/Store/widgets/featured_brands.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';

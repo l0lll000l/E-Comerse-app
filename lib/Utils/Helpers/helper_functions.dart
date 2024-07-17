@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Utils/Helpers/theme_controller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -77,8 +78,11 @@ class THelperFunctions {
     }
   }
 
+  // static bool isDarkMode(BuildContext context) {
+  //   return Theme.of(context).brightness == Brightness.dark;
+  // }
   static bool isDarkMode(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark;
+    return ThemeController.instance.isDarkMode.value;
   }
 
   static Size screenSize() {

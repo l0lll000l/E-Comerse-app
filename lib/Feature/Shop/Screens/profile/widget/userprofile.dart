@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Common/widgets/image%20container/circle_image.dart';
 import 'package:flutter_application_1/Common/widgets/image%20container/rounded_image.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';

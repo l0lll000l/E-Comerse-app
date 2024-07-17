@@ -48,7 +48,7 @@ class ProductController extends GetxController {
       // fetch category
       final products = await productRepository.getAllFeaturedBrands();
 
-      this.featuredBrands = products;
+      featuredBrands = products;
     } catch (e) {
       Tloaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }

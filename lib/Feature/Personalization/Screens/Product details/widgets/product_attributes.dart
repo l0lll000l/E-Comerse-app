@@ -124,9 +124,7 @@ class ProductAttributes extends StatelessWidget {
                                         .selectedAttributes[attribute.name] ==
                                     attributeValue;
                                 return TchoiceChip(
-                                    text: attributeValue != null
-                                        ? attributeValue
-                                        : '',
+                                    text: attributeValue ?? '',
                                     selected: isSelected,
                                     onselected: available
                                         ? (selected) {
@@ -138,7 +136,7 @@ class ProductAttributes extends StatelessWidget {
                                             }
                                           }
                                         : null);
-                              }).toList(),
+                              }),
                             ],
                           ),
                         ),
@@ -146,7 +144,7 @@ class ProductAttributes extends StatelessWidget {
                     ],
                   ),
                 )
-                .toList(),
+                ,
           ],
         ),
       ],

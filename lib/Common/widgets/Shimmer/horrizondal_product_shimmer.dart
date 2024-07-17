@@ -11,7 +11,7 @@ class IHorrizondalProductShimmer extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 3,
       separatorBuilder: (context, index) {
-        return SizedBox(height: TSizes.spaceBtwItems);
+        return const SizedBox(height: TSizes.spaceBtwItems);
       },
       itemBuilder: (_, index) {
         return const SizedBox(

@@ -3,7 +3,6 @@ import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/customShapes/primary_header.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/category_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Controller/homecontroller/banner_controller.dart';
-import 'package:flutter_application_1/Feature/Shop/Controller/update_controller.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_banner.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_brand.dart';
 import 'package:flutter_application_1/Feature/Shop/Screens/profile/upload_data/widgets/upload_category.dart';

@@ -19,9 +19,9 @@ class UserAddressScreen extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Iconsax.add),
+        child: const Icon(Iconsax.add),
         onPressed: () {
-          Get.to(() => AddNewAddress());
+          Get.to(() => const AddNewAddress());
         },
       ),
       appBar: TAppBar(
@@ -31,7 +31,7 @@ class UserAddressScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: FutureBuilder(
               future: controller.allUserAddresses(),
               builder: (context, snapshot) {

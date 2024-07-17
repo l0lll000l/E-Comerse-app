@@ -11,13 +11,13 @@ class ICategoryShimmer extends StatelessWidget {
       height: 80,
       child: ListView.separated(
         separatorBuilder: (context, index) {
-          return SizedBox(width: 10);
+          return const SizedBox(width: 10);
         },
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return Column(
+          return const Column(
             children: [
               TShimmerEffect(width: 55, height: 55, radius: 55),
               SizedBox(height: TSizes.spaceBtwItems / 2),

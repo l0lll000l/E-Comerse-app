@@ -44,7 +44,7 @@ class VariationController extends GetxController {
     return true;
   }
 
-  Set<dynamic?> getAttributeAvailabilityInVariation(
+  Set<dynamic> getAttributeAvailabilityInVariation(
       List<ProductVariationModel> variations, String attributeName) {
     final availableVariationAttibuteValues = variations
         .where((variation) =>

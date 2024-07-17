@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/appbar.dart';
 import 'package:flutter_application_1/Common/widgets/AppBar/section_heading.dart';

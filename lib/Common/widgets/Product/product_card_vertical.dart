@@ -9,7 +9,6 @@ import 'package:flutter_application_1/Feature/Shop/Controller/cart_controller.da
 import 'package:flutter_application_1/Feature/Shop/Model/product_model.dart';
 import 'package:flutter_application_1/Utils/Helpers/helper_functions.dart';
 import 'package:flutter_application_1/Utils/constants/colors.dart';
-import 'package:flutter_application_1/Utils/constants/enums.dart';
 import 'package:flutter_application_1/Utils/constants/image_strings.dart';
 import 'package:flutter_application_1/Utils/constants/shadow.dart';
 import 'package:flutter_application_1/Utils/constants/sizes.dart';
@@ -28,7 +27,7 @@ class TProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double dis = 0.0;
-    if (product?.price != null && product!.salePrice != null) {
+    if (product?.price != null) {
       dis = ((product!.price - product!.salePrice) / product!.price) * 100;
     }
 
@@ -62,7 +61,7 @@ class TProductCardVertical extends StatelessWidget {
                   ///thumbnail
                   TRoundedImage(
                     onPressed: () {},
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     fit: BoxFit.contain,
                     isNetworkImage: true,
                     imageurl: product?.thumbnail ?? TImages.noImage,
@@ -145,13 +144,11 @@ class TProductCardVertical extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            if (product!.productType != null) {
-                              final cartItem = CartController.instance
-                                  .convertToCartItem(product!, 1);
+                            final cartItem = CartController.instance
+                                .convertToCartItem(product!, 1);
 
-                              CartController.instance.addOneToCart(cartItem);
-                            }
-                          },
+                            CartController.instance.addOneToCart(cartItem);
+                                                    },
                           child: Obx(() {
                             final productQuantity = CartController.instance
                                 .getProductQuantityInCart(product!.id);

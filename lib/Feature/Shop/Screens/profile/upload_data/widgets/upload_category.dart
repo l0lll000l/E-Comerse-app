@@ -25,7 +25,7 @@ class UploadCategory extends StatelessWidget {
             CategoryController.instance.fetchCategory();
           },
           showBackArrow: true,
-          title: Text(
+          title: const Text(
             'Upload Category',
           ),
         ),

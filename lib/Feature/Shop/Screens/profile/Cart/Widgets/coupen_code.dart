@@ -45,7 +45,7 @@ class TCoupenCode extends StatelessWidget {
                               ? TColors.light.withOpacity(0.5)
                               : TColors.dark.withOpacity(0.5)),
                       onPressed: () {},
-                      child: Text('Apply')))
+                      child: const Text('Apply')))
             ],
           ),
         ],
